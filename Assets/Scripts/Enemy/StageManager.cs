@@ -13,7 +13,7 @@ public class StageManager : MonoBehaviour
     public int enemykilled = 0; // 처치한 적 수에 따라 스테이지를 올리는 방식을 생각중 !
     public int killedForNextStage = 5; // 다음 스테이지로 넘어가기 위한 적 처치 수
 
-    EnemyData enemyData; // 적 데이터 스크립트
+  
 
     public void Awake()
     {
