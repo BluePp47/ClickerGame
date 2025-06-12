@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
     public string enemyName; // 이름
-    public int enemyHealth; // 적 체력
+    public int enemyHealth; // 적 체력 // 기본값
     public Sprite enemySprite; // 적 스프라이트 
     public int bossHealth; // 보스 체력
     public int gold; // 처치 시 획득 골드
