@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUpgrade : MonoBehaviour
+public class PlayerUpgradeUI : MonoBehaviour
 {
     // PlayerUpg Observer
     // GameManager.cs Add Code
