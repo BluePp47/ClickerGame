@@ -7,21 +7,19 @@ public class PlayerUpgradeUI : MonoBehaviour
     // PlayerUpg Observer
 
     // 추후 리팩토링
+    [SerializeField] private TMP_Text CurrentGoldTxt;
     [Header("Critical")]
     [SerializeField] private TMP_Text critLvlTitleTxt;
     [SerializeField] private TMP_Text critValueTitleTxt;
     [SerializeField] private TMP_Text critValueTxt;
-    [SerializeField] private TMP_Text critCurrentGoldTxt;
     [Header("AutoAtk")]
     [SerializeField] private TMP_Text autoAtkLvlTitleTxt;
     [SerializeField] private TMP_Text autoAtkValueTitleTxt;
     [SerializeField] private TMP_Text autoAtkValueTxt;
-    [SerializeField] private TMP_Text autoAtkCurrentGoldTxt;
     [Header("GoldBonus")]
     [SerializeField] private TMP_Text goldBonusLvlTitleTxt;
     [SerializeField] private TMP_Text goldBonusValueTitleTxt;
     [SerializeField] private TMP_Text goldBonusValueTxt;
-    [SerializeField] private TMP_Text goldBonusCurrentGoldTxt;
 
     private void OnEnable()
     {
@@ -39,10 +37,10 @@ public class PlayerUpgradeUI : MonoBehaviour
 
     public void UpdateCritStats()
     {
-        //critLvlTitleTxt.text =
-        //critValueTitleTxt.text = 
-        //autoAtkValueTxt.text =
-        //critCurrentGoldTxt.text =
+        critLvlTitleTxt.text =
+        critValueTitleTxt.text =
+        autoAtkValueTxt.text =
+        critCurrentGoldTxt.text =
     }
     public void UpdateAutoAtkState()
     {
