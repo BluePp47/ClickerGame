@@ -5,26 +5,39 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     public List<WeaponData> allWeapons;
-    public List<WeaponData> ownedWeapons;
+    public List<WeaponData> ownedWeapons = new();
+
+    public bool TryBuyWeapon(WeaponData weapon)
+    {
+        if (ownedWeapons.Contains(weapon)) return false;
+
+        // TODO: 골드 확인 로직 넣기
+        ownedWeapons.Add(weapon);
+        return true;
+    }
 
     public int GetTotalBonusDamage()
     {
         int total = 0;
-        foreach (var weapon in ownedWeapons)
-        {
-            total += weapon.bonusDamage;
-        }
+        foreach (var w in ownedWeapons)
+            total += w.bonusDamage;
         return total;
     }
 
-    public bool TryBuyWeapon(WeaponData weapon)
+    public WeaponData GetBestWeapon()
     {
-        if (ownedWeapons.Contains(weapon))
-            return false;
+        WeaponData best = null;
+        int maxDamage = int.MinValue;
 
-        // gold체크하고 감소 코드
+        foreach (var w in ownedWeapons)
+        {
+            if (w.bonusDamage > maxDamage)
+            {
+                maxDamage = w.bonusDamage;
+                best = w;
+            }
+        }
 
-        ownedWeapons.Add(weapon);
-        return true;
+        return best;
     }
 }

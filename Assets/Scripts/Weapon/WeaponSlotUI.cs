@@ -6,22 +6,35 @@ using UnityEngine.UI;
 
 public class WeaponSlotUI : MonoBehaviour
 {
-    public Image weaponIcon;
-    public TMP_Text weaponNameText;
-    public TMP_Text damageText;
+    public Image iconImage;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI damageText;
+    public Button buyButton;
 
-    public void SetWeapon(WeaponData weaponData, int upgradeLevel)
+    private WeaponData weaponData;
+    private System.Action<WeaponData> onBuyCallback;
+
+    public void Set(WeaponData data, bool isOwned, System.Action<WeaponData> onBuy)
     {
-        if (weaponData == null)
-        {
-            weaponIcon.sprite = null;
-            weaponNameText.text = "None";
-            damageText.text = "-";
-            return;
-        }
+        weaponData = data;
+        onBuyCallback = onBuy;
 
-        weaponIcon.sprite = weaponData.icon;
-        weaponNameText.text = weaponData.weaponName;
-        damageText.text = $"공격력: {weaponData.GetDamageAtLevel(upgradeLevel)}";
+        if (isOwned)
+        {
+            iconImage.sprite = data.icon;
+            nameText.text = data.weaponName;
+            damageText.text = $"+{data.bonusDamage} Damage";
+            buyButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            iconImage.sprite = data.icon;
+            iconImage.color = new Color(0, 0, 0, 0.3f); // 실루엣
+            nameText.text = "???";
+            damageText.text = "???";
+            buyButton.gameObject.SetActive(true);
+            buyButton.onClick.RemoveAllListeners();
+            buyButton.onClick.AddListener(() => onBuyCallback?.Invoke(weaponData));
+        }
     }
 }
