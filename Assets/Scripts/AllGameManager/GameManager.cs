@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
             playerData = new PlayerData(); //
             currencyManager = new CurrencyManager(playerData,goldText, this);
-            audioManager = FindObjectOfType<AudioManager>();// ъ  AudioManager 李얘린
+            audioManager = FindObjectOfType<AudioManager>();
         }
         else Destroy(gameObject);
     }
