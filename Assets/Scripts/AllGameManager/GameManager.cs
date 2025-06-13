@@ -1,9 +1,9 @@
 
 using System;
 using System.Collections;
-
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PlayerData playerData; //플레이어 데이터 클래스 필요
     public AudioManager audioManager;//BGM 재생용
     private CurrencyManager currencyManager; //골드획득이나 소비용
+    public Text goldText;
     #region Subject
     public event Action OnCriticalUpg;
     public event Action OnAutoAtkSpdUpg;
@@ -22,13 +23,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)//깃
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            playerData = new PlayerData(); //�댁 곗댄 몄ㅽ댁 
-            currencyManager = new CurrencyManager(playerData); // CurrencyManager , PlayerData
+            playerData = new PlayerData(); //
+            currencyManager = new CurrencyManager(playerData,goldText, this);
             audioManager = FindObjectOfType<AudioManager>();// ъ  AudioManager 李얘린
         }
         else Destroy(gameObject);
