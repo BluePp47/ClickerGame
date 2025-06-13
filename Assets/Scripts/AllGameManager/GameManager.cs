@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public PlayerData playerData; //플레이어 데이터 클래스 필요
     public AudioManager audioManager;//BGM 재생용
     private CurrencyManager currencyManager; //골드획득이나 소비용
+    public Text goldText;
 
     private void Awake()
     {
@@ -17,7 +19,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             playerData = new PlayerData(); //플레이어 데이터 인스턴스 생성
-            currencyManager = new CurrencyManager(playerData); // CurrencyManager 생성, PlayerData필요
+            currencyManager = new CurrencyManager(playerData, goldText, this); // CurrencyManager 생성, PlayerData필요
             audioManager = FindObjectOfType<AudioManager>();// 씬에 있는 AudioManager 찾기
         }
         else Destroy(gameObject);
