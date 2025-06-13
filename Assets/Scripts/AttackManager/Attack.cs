@@ -74,7 +74,7 @@ public class Attack : MonoBehaviour
     void AttackMonster()
     {
         int damage = IsCriticalAtk(int.Parse("0.5")) ? playerData.attack * CriticalLevel  : playerData.attack;
-        enemyData.enemyHealth -= (damage + weaponData.bonusDamage);
+        enemyData.enemyHealth -= (playerData.attack + weaponData.bonusDamage)*damage;
     }
 
     bool IsCriticalAtk(float criticPer)
