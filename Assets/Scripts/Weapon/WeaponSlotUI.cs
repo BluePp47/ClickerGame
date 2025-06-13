@@ -36,5 +36,8 @@ public class WeaponSlotUI : MonoBehaviour
             buyButton.onClick.RemoveAllListeners();
             buyButton.onClick.AddListener(() => onBuyCallback?.Invoke(weaponData));
         }
+        weaponIcon.sprite = weaponData.icon;
+        weaponNameText.text = weaponData.weaponName;
+        //damageText.text = $"공격력: {weaponData.GetDamageAtLevel(upgradeLevel)}";
     }
 }
