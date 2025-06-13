@@ -8,42 +8,43 @@ public class PlayerUpgradeUI : MonoBehaviour
 
     // 추후 리팩토링
     [Header("Critical")]
-    [SerializeField] private TMP_Text critUpgCntTxt;
-    [SerializeField] private TMP_Text critTxt;
-    [SerializeField] private TMP_Text critCostTxt;
-    [SerializeField] private TMP_Text critCurrentTxt;
-    [Header("AutoAtkSpd")]
-    [SerializeField] private TMP_Text autoAtkSpdCntTxt;
-    [SerializeField] private TMP_Text autoAtkSpdTxt;
-    [SerializeField] private TMP_Text autoAtkSpdCostTxt;
-    [SerializeField] private TMP_Text autoAtkSpdCurrentTxt;
+    [SerializeField] private TMP_Text critLvlTitleTxt;
+    [SerializeField] private TMP_Text critValueTitleTxt;
+    [SerializeField] private TMP_Text critValueTxt;
+    [SerializeField] private TMP_Text critCurrentGoldTxt;
+    [Header("AutoAtk")]
+    [SerializeField] private TMP_Text autoAtkLvlTitleTxt;
+    [SerializeField] private TMP_Text autoAtkValueTitleTxt;
+    [SerializeField] private TMP_Text autoAtkValueTxt;
+    [SerializeField] private TMP_Text autoAtkCurrentGoldTxt;
     [Header("GoldBonus")]
-    [SerializeField] private TMP_Text goldBonusCntTxt;
-    [SerializeField] private TMP_Text goldBonusTxt;
-    [SerializeField] private TMP_Text goldBonusCostTxt;
-    [SerializeField] private TMP_Text goldBonusCurrentTxt;
+    [SerializeField] private TMP_Text goldBonusLvlTitleTxt;
+    [SerializeField] private TMP_Text goldBonusValueTitleTxt;
+    [SerializeField] private TMP_Text goldBonusValueTxt;
+    [SerializeField] private TMP_Text goldBonusCurrentGoldTxt;
 
     private void OnEnable()
     {
+        // GM Rename OnAutoAtkSpdUpg -> OnAutoAtkUpg
         GameManager.Instance.OnCriticalUpg += UpdateCritStats;
-        GameManager.Instance.OnAutoAtkSpdUpg += UpdateAutoAtkSpdState;
+        GameManager.Instance.OnAutoAtkSpdUpg += UpdateAutoAtkState;
         GameManager.Instance.OnGoldBonusUpg += UpdateGoldBonusStats;
     }
     private void OnDisable()
     {
         GameManager.Instance.OnCriticalUpg -= UpdateCritStats;
-        GameManager.Instance.OnAutoAtkSpdUpg -= UpdateAutoAtkSpdState;
+        GameManager.Instance.OnAutoAtkSpdUpg -= UpdateAutoAtkState;
         GameManager.Instance.OnGoldBonusUpg -= UpdateGoldBonusStats;
     }
 
     public void UpdateCritStats()
     {
-        //critUpgCntTxt.text =
-        //critTxt.text = 
-        //critCostTxt.text =
-        //critCurrentTxt.text =
+        //critLvlTitleTxt.text =
+        //critValueTitleTxt.text = 
+        //autoAtkValueTxt.text =
+        //critCurrentGoldTxt.text =
     }
-    public void UpdateAutoAtkSpdState()
+    public void UpdateAutoAtkState()
     {
         //autoAtkSpdCntTxt.text = 
         //autoAtkSpdTxt.text = 

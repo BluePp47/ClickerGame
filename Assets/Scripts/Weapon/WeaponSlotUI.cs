@@ -22,6 +22,6 @@ public class WeaponSlotUI : MonoBehaviour
 
         weaponIcon.sprite = weaponData.icon;
         weaponNameText.text = weaponData.weaponName;
-        damageText.text = $"공격력: {weaponData.GetDamageAtLevel(upgradeLevel)}";
+        //damageText.text = $"공격력: {weaponData.GetDamageAtLevel(upgradeLevel)}";
     }
 }
