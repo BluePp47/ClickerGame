@@ -1,29 +1,41 @@
+
+using System;
 using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public PlayerData playerData; //ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ Å¬·¡½º ÇÊ¿ä
-    public AudioManager audioManager;//BGM Àç»ı¿ë
-    private CurrencyManager currencyManager; //°ñµåÈ¹µæÀÌ³ª ¼Òºñ¿ë
-    public Text goldText;
+    public PlayerData playerData; //í”Œë ˆì´ì–´ ë°ì´í„° í´ë˜ìŠ¤ í•„ìš”
+    public AudioManager audioManager;//BGM ì¬ìƒìš©
+    private CurrencyManager currencyManager; //ê³¨ë“œíšë“ì´ë‚˜ ì†Œë¹„ìš©
+    #region Subject
+    public event Action OnCriticalUpg;
+    public event Action OnAutoAtkSpdUpg;
+    public event Action OnGoldBonusUpg;
+    public void ClickCriticalUpg() => OnCriticalUpg?.Invoke();
+    public void ClickAutoAtkSpdUpg() => OnAutoAtkSpdUpg?.Invoke();
+    public void ClickGoldBonusUpg() => OnGoldBonusUpg?.Invoke();
+    #endregion
 
     private void Awake()
     {
-        if (Instance == null)//½Ì±ÛÅæ
+        if (Instance == null)//Â‹ê¹ƒÂ€Â†
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            playerData = new PlayerData(); //ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ ÀÎ½ºÅÏ½º »ı¼º
-            currencyManager = new CurrencyManager(playerData, goldText, this); // CurrencyManager »ı¼º, PlayerDataÇÊ¿ä
-            audioManager = FindObjectOfType<AudioManager>();// ¾À¿¡ ÀÖ´Â AudioManager Ã£±â
+            playerData = new PlayerData(); //Â”ÂŒï¿½ÂˆÂëŒÂ– Âê³—ÂëŒ„Â„ Âëª„ÂŠã…½Â„ëŒÂŠ ÂƒÂÂ„
+            currencyManager = new CurrencyManager(playerData); // CurrencyManager ÂƒÂÂ„, PlayerDataÂ•Â„ÂšÂ”
+            audioManager = FindObjectOfType<AudioManager>();// Â”ÑŠÂ—Â ÂÂˆÂŠÂ” AudioManager ï§¡ì–˜ë¦°
         }
         else Destroy(gameObject);
     }
+
+
+
     public void GainGold(int amount)
     {
         currencyManager.AddGold(amount);
@@ -47,6 +59,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
