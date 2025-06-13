@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class Attack : MonoBehaviour
 {
-    public EnemyData enemyData;
+    EnemyData enemyData;
     public PlayerData playerData;
     public WeaponData weaponData;
 

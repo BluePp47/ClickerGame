@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1351,6 +1351,7 @@ MonoBehaviour:
   contentParent: {fileID: 846299897}
   weaponSlotPrefab: {fileID: 1761533148675351562, guid: e8eb5891a76739a44b307d450f6d1b53, type: 3}
   weaponManager: {fileID: 1773598021}
+  mainWeaponUI: {fileID: 0}
 --- !u!1 &673066944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1364,7 @@ GameObject:
   - component: {fileID: 673066947}
   - component: {fileID: 673066946}
   - component: {fileID: 673066945}
+  - component: {fileID: 673066949}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1458,6 +1460,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &673066949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673066944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44ba501e6300d6489ed8eb5f690df10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    gold: 0
+    stage: 1
+    attack: 10
+    level: 1
+  weaponData: {fileID: 11400000, guid: f06d57bef421ab64889f3ddf5778dab3, type: 2}
+  AutoAttacklevel: 0
+  TouchAttackCoolDown: 0.2
+  LastAtkTouch: 0
+  IsAttackTouch: 1
 --- !u!1 &762966329
 GameObject:
   m_ObjectHideFlags: 0
