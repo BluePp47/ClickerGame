@@ -1,4 +1,7 @@
-﻿using System.Collections;
+
+using System;
+using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,17 +11,25 @@ public class GameManager : MonoBehaviour
     public PlayerData playerData; //플레이어 데이터 클래스 필요
     public AudioManager audioManager;//BGM 재생용
     private CurrencyManager currencyManager; //골드획득이나 소비용
+    #region Subject
+    public event Action OnCriticalUpg;
+    public event Action OnAutoAtkSpdUpg;
+    public event Action OnGoldBonusUpg;
+    public void ClickCriticalUpg() => OnCriticalUpg?.Invoke();
+    public void ClickAutoAtkSpdUpg() => OnAutoAtkSpdUpg?.Invoke();
+    public void ClickGoldBonusUpg() => OnGoldBonusUpg?.Invoke();
+    #endregion
 
     private void Awake()
     {
-        if (Instance == null)//싱글톤
+        if (Instance == null)//깃
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            playerData = new PlayerData(); //플레이어 데이터 인스턴스 생성
-            currencyManager = new CurrencyManager(playerData); // CurrencyManager 생성, PlayerData필요
-            audioManager = FindObjectOfType<AudioManager>();// 씬에 있는 AudioManager 찾기
+            playerData = new PlayerData(); //�댁 곗댄 몄ㅽ댁 
+            currencyManager = new CurrencyManager(playerData); // CurrencyManager , PlayerData
+            audioManager = FindObjectOfType<AudioManager>();// ъ  AudioManager 李얘린
         }
         else Destroy(gameObject);
     }
