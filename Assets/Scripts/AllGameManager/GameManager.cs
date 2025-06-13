@@ -22,10 +22,7 @@ public class GameManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-
-
-    
-        public void GainGold(int amount)
+    public void GainGold(int amount)
     {
         currencyManager.AddGold(amount);
     }
