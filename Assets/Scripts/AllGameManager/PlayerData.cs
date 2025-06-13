@@ -12,7 +12,7 @@ public class PlayerData
 
     public PlayerData()
     {
-        gold = 0;
+        gold = 10000;
         stage = 1;
         attack = 10;
         level = 1;
