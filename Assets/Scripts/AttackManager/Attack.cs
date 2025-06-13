@@ -22,7 +22,7 @@ public class Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+         StartCoroutine(AutoAttackRoutine());
     }
 
     // Update is called once per frame
@@ -54,7 +54,7 @@ public class Attack : MonoBehaviour
             StopCoroutine(AutoAttackCoroutine);
         }
 
-        AutoAttackCoroutine = StartCoroutine( );
+        AutoAttackCoroutine = StartCoroutine(AutoAttackRoutine());
     }
     IEnumerator AutoAttackRoutine()
     {
