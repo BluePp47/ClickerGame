@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,14 @@ public class GameManager : MonoBehaviour
     public PlayerData playerData; //플레이어 데이터 클래스 필요
     public AudioManager audioManager;//BGM 재생용
     private CurrencyManager currencyManager; //골드획득이나 소비용
-
+    #region Subject
+    public event Action OnCriticalUpg;
+    public event Action OnAutoAtkSpdUpg;
+    public event Action OnGoldBonusUpg;
+    public void ClickCriticalUpg() => OnCriticalUpg?.Invoke();
+    public void ClickAutoAtkSpdUpg() => OnAutoAtkSpdUpg?.Invoke();
+    public void ClickGoldBonusUpg() => OnGoldBonusUpg?.Invoke();
+    #endregion
     private void Awake()
     {
         if (Instance == null)//싱글톤
@@ -24,8 +32,8 @@ public class GameManager : MonoBehaviour
     }
 
 
-    
-        public void GainGold(int amount)
+
+    public void GainGold(int amount)
     {
         currencyManager.AddGold(amount);
     }

@@ -5,14 +5,7 @@ using UnityEngine.UI;
 public class PlayerUpgradeUI : MonoBehaviour
 {
     // PlayerUpg Observer
-    // GameManager.cs Add Code
-    // -> public event Action OnCriticalUpg
-    // -> public event Action OnAutoAtkSpdUpg
-    // -> public event Action OnGoldBonusUpg
-    // -> public void ClickCriticalUpg() => OnCriticalUpg?.Invoke(); 
-    // -> public void ClickAutoAtkSpdUpg() => OnAutoAtkSpdUpg?.Invoke(); 
-    // -> public void ClickGoldBonusUpg() => OnGoldBonusUpg?.Invoke(); 
-    
+
     // 추후 리팩토링
     [Header("Critical")]
     [SerializeField] private TMP_Text critUpgCntTxt;
@@ -30,17 +23,17 @@ public class PlayerUpgradeUI : MonoBehaviour
     [SerializeField] private TMP_Text goldBonusCostTxt;
     [SerializeField] private TMP_Text goldBonusCurrentTxt;
 
-    public void OnEnable()
+    private void OnEnable()
     {
-        //GameManager.Instance.OnCriticalUpg += UpdateCritStats();
-        //GameManager.Instance.OnAutoAtkSpdUpg += UpdateAutoAtkSpdState();
-        //GameManager.Instance.OnGoldBonusUpg += UpdateGoldBonusStats();
+        GameManager.Instance.OnCriticalUpg += UpdateCritStats;
+        GameManager.Instance.OnAutoAtkSpdUpg += UpdateAutoAtkSpdState;
+        GameManager.Instance.OnGoldBonusUpg += UpdateGoldBonusStats;
     }
-    public void OnDisable()
+    private void OnDisable()
     {
-        //GameManager.Instance.OnCriticalUpg -= UpdateCritStats();
-        //GameManager.Instance.OnAutoAtkSpdUpg -= UpdateAutoAtkSpdState();
-        //GameManager.Instance.OnGoldBonusUpg -= UpdateGoldBonusStats();
+        GameManager.Instance.OnCriticalUpg -= UpdateCritStats;
+        GameManager.Instance.OnAutoAtkSpdUpg -= UpdateAutoAtkSpdState;
+        GameManager.Instance.OnGoldBonusUpg -= UpdateGoldBonusStats;
     }
 
     public void UpdateCritStats()
