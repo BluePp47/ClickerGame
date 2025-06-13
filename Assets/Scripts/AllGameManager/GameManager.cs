@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public event Action OnCriticalUpg;
     public event Action OnAutoAtkSpdUpg;
     public event Action OnGoldBonusUpg;
+    public event Action<List<TMP_Text>> OnTestUpg;
     public void ClickCriticalUpg() => OnCriticalUpg?.Invoke();
     public void ClickAutoAtkSpdUpg() => OnAutoAtkSpdUpg?.Invoke();
     public void ClickGoldBonusUpg() => OnGoldBonusUpg?.Invoke();
