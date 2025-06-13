@@ -1,31 +1,31 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public PlayerData playerData; //ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ Å¬·¡½º ÇÊ¿ä
-    public AudioManager audioManager;//BGM Àç»ı¿ë
-    private CurrencyManager currencyManager; //°ñµåÈ¹µæÀÌ³ª ¼Òºñ¿ë
+    public PlayerData playerData; //í”Œë ˆì´ì–´ ë°ì´í„° í´ë˜ìŠ¤ í•„ìš”
+    public AudioManager audioManager;//BGM ì¬ìƒìš©
+    private CurrencyManager currencyManager; //ê³¨ë“œíšë“ì´ë‚˜ ì†Œë¹„ìš©
 
     private void Awake()
     {
-        if (Instance == null)//½Ì±ÛÅæ
+        if (Instance == null)//ì‹±ê¸€í†¤
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            playerData = new PlayerData(); //ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ ÀÎ½ºÅÏ½º »ı¼º
-            currencyManager = new CurrencyManager(playerData); // CurrencyManager »ı¼º, PlayerDataÇÊ¿ä
-            audioManager = FindObjectOfType<AudioManager>();// ¾À¿¡ ÀÖ´Â AudioManager Ã£±â
+            playerData = new PlayerData(); //í”Œë ˆì´ì–´ ë°ì´í„° ì¸ìŠ¤í„´ìŠ¤ ìƒì„±
+            currencyManager = new CurrencyManager(playerData); // CurrencyManager ìƒì„±, PlayerDataí•„ìš”
+            audioManager = FindObjectOfType<AudioManager>();// ì”¬ì— ìˆëŠ” AudioManager ì°¾ê¸°
         }
         else Destroy(gameObject);
     }
 
 
-    
-        public void GainGold(int amount)
+
+    public void GainGold(int amount)
     {
         currencyManager.AddGold(amount);
     }
@@ -48,6 +48,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
