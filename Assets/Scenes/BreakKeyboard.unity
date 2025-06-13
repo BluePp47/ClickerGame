@@ -1315,7 +1315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &579676002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1509,7 +1509,7 @@ GameObject:
   - component: {fileID: 770480902}
   - component: {fileID: 770480901}
   m_Layer: 5
-  m_Name: EquipedWeaponText
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1800,7 +1800,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -1000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &846299898
 MonoBehaviour:
@@ -2652,7 +2652,7 @@ RectTransform:
   m_Father: {fileID: 1869617235}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5057,8 +5057,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2005584915}
+  - component: {fileID: 2005584916}
   m_Layer: 5
-  m_Name: EquipedWeaponUI
+  m_Name: MainWeaponUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5086,6 +5087,21 @@ RectTransform:
   m_AnchoredPosition: {x: -174, y: 0}
   m_SizeDelta: {x: 400, y: 390}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &2005584916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005584914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99387ff2a3654ee4ba9d51cda6894db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconImage: {fileID: 2028735142}
+  nameText: {fileID: 770480901}
+  weaponManager: {fileID: 1773598021}
 --- !u!1 &2028735140
 GameObject:
   m_ObjectHideFlags: 0
@@ -5098,7 +5114,7 @@ GameObject:
   - component: {fileID: 2028735143}
   - component: {fileID: 2028735142}
   m_Layer: 5
-  m_Name: EquipedWeapon
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

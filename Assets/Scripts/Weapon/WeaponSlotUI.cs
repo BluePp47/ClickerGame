@@ -29,7 +29,7 @@ public class WeaponSlotUI : MonoBehaviour
         else
         {
             iconImage.sprite = data.icon;
-            iconImage.color = new Color(0, 0, 0, 0.3f); // 실루엣
+            iconImage.color = new Color(0, 0, 0, 0.3f);
             nameText.text = "???";
             damageText.text = "???";
             buyButton.gameObject.SetActive(true);

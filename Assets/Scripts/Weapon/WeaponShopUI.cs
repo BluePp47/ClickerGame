@@ -7,6 +7,7 @@ public class WeaponShopUI : MonoBehaviour
     public Transform contentParent;
     public GameObject weaponSlotPrefab;
     public WeaponManager weaponManager;
+    public WeaponMainUI mainWeaponUI;
 
     private void Start()
     {
@@ -33,6 +34,7 @@ public class WeaponShopUI : MonoBehaviour
         if (weaponManager.TryBuyWeapon(weapon))
         {
             RefreshUI();
+            mainWeaponUI.UpdateUI();
         }
     }
 }
