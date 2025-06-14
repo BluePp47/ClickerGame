@@ -59,7 +59,7 @@ public class CurrencyManager
         }
         else
         {
-            for (int i = startValue; i >= endValue; i--)// 골드가 감소할 때
+            for (int i = startValue; i >= endValue; i--)// 골드가 감소할 때 
             {
                 goldText.text = i.ToString(); // 텍스트 UI 업데이트
                 yield return new WaitForSeconds(waitTime); // 대기
