@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,26 +12,54 @@ public class WeaponUIManager : MonoBehaviour
     public Button openShopButton;
     public Button closeShopButton;
 
-    public Button buyWeaponButton;
-    public Button upgradeWeaponButton;
+    public WeaponManager weaponManager;
+    public WeaponMainUI weaponMainUIComponent;
+    public WeaponShopUI weaponShopUI;
 
-    private bool weaponPurchased = false;
-    private int weaponLevel = 1;
-    private int baseDamage = 10;
+    private int gold = 500;
 
     void Start()
     {
         openShopButton.onClick.AddListener(OpenShop);
         closeShopButton.onClick.AddListener(CloseShop);
-        buyWeaponButton.onClick.AddListener(BuyWeapon);
-        upgradeWeaponButton.onClick.AddListener(UpgradeWeapon);
 
-        upgradeWeaponButton.gameObject.SetActive(false);
+        RefreshUI();
+    }
+
+    public int GetGold() => gold;
+
+    public bool TryBuyWeapon(WeaponData weapon)
+    {
+        if (weaponManager.TryBuyWeapon(weapon, gold, out int cost))
+        {
+            gold -= cost;
+            return true;
+        }
+        else
+        {
+            Debug.Log("골드가 부족하거나 이미 소유중입니다.");
+            return false;
+        }
+    }
+
+    public bool TryUpgradeWeapon(WeaponData weapon)
+    {
+        if (weaponManager.TryUpgradeWeapon(weapon, gold, out int cost))
+        {
+            gold -= cost;
+            return true;
+        }
+        else
+        {
+            Debug.Log("골드가 부족하거나 업그레이드 할 수 없습니다.");
+            return false;
+        }
     }
 
     void OpenShop()
     {
         shopUI.SetActive(true);
+        weaponShopUI.RefreshUI();
     }
 
     void CloseShop()
@@ -38,21 +67,9 @@ public class WeaponUIManager : MonoBehaviour
         shopUI.SetActive(false);
     }
 
-    void BuyWeapon()
+    public void RefreshUI()
     {
-        if (!weaponPurchased)
-        {
-            weaponPurchased = true;
-
-            upgradeWeaponButton.gameObject.SetActive(true);
-        }
-    }
-
-    void UpgradeWeapon()
-    {
-        if (weaponPurchased)
-        {
-            weaponLevel++;
-        }
+        weaponMainUIComponent.UpdateUI();
+        weaponShopUI.RefreshUI();
     }
 }
