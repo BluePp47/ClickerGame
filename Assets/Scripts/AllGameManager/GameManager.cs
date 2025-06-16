@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour
     {
         optionPanel.SetActive(!optionPanel.activeSelf);
     }
+    public void CloseOptionPanel()
+    {
+        optionPanel.SetActive(false);
+    }
 
 
     public void GainGold(int amount)
