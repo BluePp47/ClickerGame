@@ -31,18 +31,18 @@ public class PlayerUpgradeHandler
         }
         return value.ToString("N1");
     }
-    //public string GetLvlCostText(string lvl)
-    //{
-    //    int level = int.Parse(lvl);
+    public string GetLvlCostText(string lvl)
+    {
+        int level = int.Parse(lvl);
 
-    //    return level.ToString();
-    //}
-    //public string GetCurrentGoldText(string lvl)
-    //{
-    //    int level = int.Parse(lvl);
+        return level.ToString();
+    }
+    public string GetCurrentGoldText(string lvl)
+    {
+        int level = int.Parse(lvl);
 
-    //    return level.ToString();
-    //}
+        return level.ToString();
+    }
     public PlayerUpgradeHandler(PlayerStatsSO statsdata)
     {
         data = statsdata;

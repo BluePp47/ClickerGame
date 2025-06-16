@@ -58,8 +58,8 @@ public class PlayerUpgradeUI : MonoBehaviour
     {
         txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);
         txt[1].text = playerUpgHandler.GetValueText(txt[0].text, type);
-        //txt[2].text = playerUpgHandler.GetLvlCostText(txt[2].text);
-        //txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[3].text);
+        txt[2].text = playerUpgHandler.GetLvlCostText(txt[0].text);
+        txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[0].text);
     }
 
 }
