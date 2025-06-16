@@ -3,6 +3,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum UpgType
+{
+    Critical,
+    AutoAttack,
+    GoldBonus
+}
+
 public class PlayerUpgradeUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text currentGoldTxt;
@@ -26,43 +33,31 @@ public class PlayerUpgradeUI : MonoBehaviour
     [SerializeField] private PlayerUpgradeHandler playerUpgHandler;
     [SerializeField] private PlayerStatsSO statsSO;
 
-    //private int critLvl;
-    //private int autoAtkLvl;
-    //private int goldBonusLvl;
-
     private void Awake()
     {
         playerUpgHandler = new PlayerUpgradeHandler(statsSO);
     }
     private void OnEnable()
     {
-        // GM Rename OnAutoAtkSpdUpg -> OnAutoAtkUpg
-
         GameManager.Instance.OnTestUpg += UpdateUI;
-        //GameManager.Instance.OnCriticalUpg += UpdateCritStatsUI;
-        //GameManager.Instance.OnAutoAtkSpdUpg += UpdateAutoAtkStateUI;
-        //GameManager.Instance.OnGoldBonusUpg += UpdateGoldBonusStatsUI;
     }
     private void Start()
     {
         List<TMP_Text> criticalLIst = new List<TMP_Text> { critLvlTitleTxt, critValueTxt, critLvlUpTxt, currentGoldTxt };
         List<TMP_Text> autoAtkLIst = new List<TMP_Text> { autoAtkLvlTitleTxt, autoAtkValueTxt, autoAtkLvlUpTxt, currentGoldTxt };
         List<TMP_Text> goldBonusLIst = new List<TMP_Text> { goldBonusLvlTitleTxt, goldBonusValueTxt, goldBonusLvlUpTxt, currentGoldTxt };
-        criticalBtn.onClick.AddListener(() => UpdateUI(criticalLIst));
-        autoAtkBtn.onClick.AddListener(() => UpdateUI(autoAtkLIst));
-        goldBonusBtn.onClick.AddListener(() => UpdateUI(goldBonusLIst));
+        criticalBtn.onClick.AddListener(() => UpdateUI(criticalLIst, UpgType.Critical));
+        autoAtkBtn.onClick.AddListener(() => UpdateUI(autoAtkLIst, UpgType.AutoAttack));
+        goldBonusBtn.onClick.AddListener(() => UpdateUI(goldBonusLIst, UpgType.GoldBonus));
     }
     private void OnDisable()
     {
         GameManager.Instance.OnTestUpg -= UpdateUI;
-        //GameManager.Instance.OnCriticalUpg -= UpdateCritStatsUI;
-        //GameManager.Instance.OnAutoAtkSpdUpg -= UpdateAutoAtkStateUI;
-        //GameManager.Instance.OnGoldBonusUpg -= UpdateGoldBonusStatsUI;
     }
-    public void UpdateUI(List<TMP_Text> txt)
+    public void UpdateUI(List<TMP_Text> txt, UpgType type)
     {
         txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);
-        txt[1].text = playerUpgHandler.GetValueText(txt[1].text);
+        txt[1].text = playerUpgHandler.GetValueText(txt[0].text, type);
         //txt[2].text = playerUpgHandler.GetLvlCostText(txt[2].text);
         //txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[3].text);
     }
