@@ -464,7 +464,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
   m_sharedMaterial: {fileID: 4804673219077872049, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
@@ -5376,7 +5376,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
   m_sharedMaterial: {fileID: 4804673219077872049, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
@@ -8256,7 +8256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
   m_sharedMaterial: {fileID: 4804673219077872049, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
@@ -8961,7 +8961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ba5c3411f5beb43861f3c2819ebf40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGoldTxt: {fileID: 384773006}
   critLvlTitleTxt: {fileID: 102135699}
   critValueTxt: {fileID: 747832920}
   critLvlUpTxt: {fileID: 986576135}
@@ -8974,6 +8973,7 @@ MonoBehaviour:
   criticalBtn: {fileID: 1094117476}
   autoAtkBtn: {fileID: 257927370}
   goldBonusBtn: {fileID: 155239914}
+  currentGoldTxt: {fileID: 384773006}
   statsSO: {fileID: 11400000, guid: 30bc442be1e312b40b058fa84d69cb39, type: 2}
 --- !u!4 &2046663001
 Transform:

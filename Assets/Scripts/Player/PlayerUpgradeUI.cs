@@ -12,7 +12,6 @@ public enum UpgType
 
 public class PlayerUpgradeUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text currentGoldTxt;
     [Header("Critical")]
     [SerializeField] private TMP_Text critLvlTitleTxt;
     [SerializeField] private TMP_Text critValueTxt;
@@ -29,7 +28,8 @@ public class PlayerUpgradeUI : MonoBehaviour
     [SerializeField] private Button criticalBtn;
     [SerializeField] private Button autoAtkBtn;
     [SerializeField] private Button goldBonusBtn;
-
+    [Header("Others")]
+    [SerializeField] private TMP_Text currentGoldTxt;
     [SerializeField] private PlayerUpgradeHandler playerUpgHandler;
     [SerializeField] private PlayerStatsSO statsSO;
 
@@ -43,9 +43,9 @@ public class PlayerUpgradeUI : MonoBehaviour
     }
     private void Start()
     {
-        List<TMP_Text> criticalLIst = new List<TMP_Text> { critLvlTitleTxt, critValueTxt, critLvlUpTxt, currentGoldTxt };
-        List<TMP_Text> autoAtkLIst = new List<TMP_Text> { autoAtkLvlTitleTxt, autoAtkValueTxt, autoAtkLvlUpTxt, currentGoldTxt };
-        List<TMP_Text> goldBonusLIst = new List<TMP_Text> { goldBonusLvlTitleTxt, goldBonusValueTxt, goldBonusLvlUpTxt, currentGoldTxt };
+        List<TMP_Text> criticalLIst = new List<TMP_Text> { currentGoldTxt, critLvlTitleTxt, critValueTxt, critLvlUpTxt };
+        List<TMP_Text> autoAtkLIst = new List<TMP_Text> { currentGoldTxt, autoAtkLvlTitleTxt, autoAtkValueTxt, autoAtkLvlUpTxt };
+        List<TMP_Text> goldBonusLIst = new List<TMP_Text> { currentGoldTxt, goldBonusLvlTitleTxt, goldBonusValueTxt, goldBonusLvlUpTxt };
         criticalBtn.onClick.AddListener(() => UpdateUI(criticalLIst, UpgType.Critical));
         autoAtkBtn.onClick.AddListener(() => UpdateUI(autoAtkLIst, UpgType.AutoAttack));
         goldBonusBtn.onClick.AddListener(() => UpdateUI(goldBonusLIst, UpgType.GoldBonus));
@@ -56,10 +56,10 @@ public class PlayerUpgradeUI : MonoBehaviour
     }
     public void UpdateUI(List<TMP_Text> txt, UpgType type)
     {
-        txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);
-        txt[1].text = playerUpgHandler.GetValueText(txt[0].text, type);
-        txt[2].text = playerUpgHandler.GetLvlCostText(txt[0].text);
-        txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[0].text);
+        //txt[0].text = playerUpgHandler.GetCurrentGoldText(txt[0].text);    // CurrentGold Txt
+        txt[1].text = playerUpgHandler.GetLvlTitleText(txt[1].text);       // Lvl Txt
+        txt[2].text = playerUpgHandler.GetValueText(txt[1].text, type);    // Value Txt
+        //txt[3].text = playerUpgHandler.GetLvlCostText(txt[0].text);        // Cost Txt
     }
-
+    
 }
