@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public AudioManager audioManager;//BGM 재생용
     private CurrencyManager currencyManager; //골드획득이나 소비용
     public Text goldText;
+    public GameObject optionPanel; //bgm이나 설정
     #region Subject
     public event Action OnCriticalUpg;
     public event Action OnAutoAtkSpdUpg;
@@ -37,6 +38,10 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    public void ToggleOptionPanel()
+    {
+        optionPanel.SetActive(!optionPanel.activeSelf);
+    }
 
 
     public void GainGold(int amount)
