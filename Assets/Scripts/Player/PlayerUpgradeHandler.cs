@@ -4,29 +4,38 @@ public class PlayerUpgradeHandler
 {
     private PlayerStatsSO data;
 
+    private int critLvl = 1;
+    private int autoAtkLvl = 1;
+    private int goldBonusLvl = 1;
+    public int CritLvl => critLvl;
+    public int AutoAtkLvl => autoAtkLvl;
+    public int GoldBonusLvl => goldBonusLvl;
 
-    public string GetLvlTitleText(string lvl)
+    public string GetLvlTitleText(string level)
     {
-        int level = int.Parse(lvl);
-        level++;    
-        return level.ToString();
+        int lvl = int.Parse(level);
+        lvl++;
+        return lvl.ToString();
     }
     public string GetValueText(string lvl)
     {
-        int level = int.Parse(lvl);
-        float value = data.GetCriticalValue(level);
+        float value = data.GetCriticalValue(lvl);
         return value.ToString("F1");
     }
-    public string GetLvlCostText(string lvl)
-    {
-        int level = int.Parse(lvl);
+    //public string GetLvlCostText(string lvl)
+    //{
+    //    int level = int.Parse(lvl);
 
-        return level.ToString();
-    }
-    public string GetCurrentGoldText(string lvl)
-    {
-        int level = int.Parse(lvl);
+    //    return level.ToString();
+    //}
+    //public string GetCurrentGoldText(string lvl)
+    //{
+    //    int level = int.Parse(lvl);
 
-        return level.ToString();
+    //    return level.ToString();
+    //}
+    public PlayerUpgradeHandler(PlayerStatsSO statsdata)
+    {
+        data = statsdata;
     }
 }

@@ -24,10 +24,15 @@ public class PlayerUpgradeUI : MonoBehaviour
     [SerializeField] private Button goldBonusBtn;
 
     [SerializeField] private PlayerUpgradeHandler playerUpgHandler;
+    [SerializeField] private PlayerStatsSO statsSO;
+
+    //private int critLvl;
+    //private int autoAtkLvl;
+    //private int goldBonusLvl;
 
     private void Awake()
     {
-        playerUpgHandler = new PlayerUpgradeHandler();
+        playerUpgHandler = new PlayerUpgradeHandler(statsSO);
     }
     private void OnEnable()
     {
@@ -58,8 +63,8 @@ public class PlayerUpgradeUI : MonoBehaviour
     {
         txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);
         txt[1].text = playerUpgHandler.GetValueText(txt[1].text);
-        txt[2].text = playerUpgHandler.GetLvlCostText(txt[2].text);
-        txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[3].text);
+        //txt[2].text = playerUpgHandler.GetLvlCostText(txt[2].text);
+        //txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[3].text);
     }
 
 }
