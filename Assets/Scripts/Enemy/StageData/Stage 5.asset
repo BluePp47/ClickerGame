@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dca0b08fac591084688c0f46198d6a5c, type: 3}
-  m_Name: Enemy1
+  m_Script: {fileID: 11500000, guid: 0ab6bf1dfbff858409e88b3c969d89d1, type: 3}
+  m_Name: Stage 5
   m_EditorClassIdentifier: 
-  enemyName: A
-  enemyHealth: 100
-  enemySprite: {fileID: 0}
-  gold: 0
-  prefab: {fileID: 0}
+  stageNumber: 5
+  stageDuration: 90
+  killsToNext: 5
+  spawnableEnemies: []

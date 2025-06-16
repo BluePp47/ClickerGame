@@ -5,10 +5,11 @@
 public class EnemyData : ScriptableObject
 {
     public string enemyName;       // 적 이름
-    public int enemyHealth;        // 기본 체력
+    public int enemyHealth ;        // 기본 체력
     public Sprite enemySprite;     // 적 이미지
     public int gold;               // 처치 시 획득 골드
 
+    public GameObject prefab;
     // 스테이지에 따라 체력 증가
     public int GetHealthForStage(int stage)
     {

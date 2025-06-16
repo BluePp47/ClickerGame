@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ab6bf1dfbff858409e88b3c969d89d1, type: 3}
-  m_Name: Stage 1
+  m_Name: Stage 2
   m_EditorClassIdentifier: 
-  stageNumber: 1
+  stageNumber: 2
   stageDuration: 90
   killsToNext: 5
   spawnableEnemies:
-  - {fileID: 11400000, guid: b047f571025c3c543a9cb9e16ec4b6ca, type: 2}
-  - {fileID: 11400000, guid: b047f571025c3c543a9cb9e16ec4b6ca, type: 2}
-  - {fileID: 11400000, guid: b047f571025c3c543a9cb9e16ec4b6ca, type: 2}
-  - {fileID: 11400000, guid: b047f571025c3c543a9cb9e16ec4b6ca, type: 2}
-  - {fileID: 11400000, guid: b047f571025c3c543a9cb9e16ec4b6ca, type: 2}
+  - {fileID: 11400000, guid: 80dd96d01b4320f41949b1fb748540df, type: 2}
+  - {fileID: 11400000, guid: 80dd96d01b4320f41949b1fb748540df, type: 2}
+  - {fileID: 11400000, guid: 80dd96d01b4320f41949b1fb748540df, type: 2}
+  - {fileID: 11400000, guid: 80dd96d01b4320f41949b1fb748540df, type: 2}
+  - {fileID: 11400000, guid: 80dd96d01b4320f41949b1fb748540df, type: 2}
