@@ -14,9 +14,15 @@ public class GameManager : MonoBehaviour
     private CurrencyManager currencyManager; //골드획득이나 소비용
     public Text goldText;
     public GameObject optionPanel; //bgm이나 설정
-
-    public event Action<List<TMP_Text>, UpgType> OnUIChange;
-
+    #region Subject
+    public event Action OnCriticalUpg;
+    public event Action OnAutoAtkSpdUpg;
+    public event Action OnGoldBonusUpg;
+    public event Action<List<TMP_Text>, UpgType> OnTestUpg;
+    public void ClickCriticalUpg() => OnCriticalUpg?.Invoke();
+    public void ClickAutoAtkSpdUpg() => OnAutoAtkSpdUpg?.Invoke();
+    public void ClickGoldBonusUpg() => OnGoldBonusUpg?.Invoke();
+    #endregion
 
     private void Awake()
     {

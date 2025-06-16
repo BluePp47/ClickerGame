@@ -32,13 +32,22 @@ public class PlayerUpgradeUI : MonoBehaviour
     [SerializeField] private PlayerUpgradeHandler playerUpgHandler;
     [SerializeField] private PlayerStatsSO statsSO;
 
+    //private int critLvl;
+    //private int autoAtkLvl;
+    //private int goldBonusLvl;
+
     private void Awake()
     {
         playerUpgHandler = new PlayerUpgradeHandler(statsSO);
     }
     private void OnEnable()
     {
-        GameManager.Instance.OnUIChange += UpdateUI;
+        // GM Rename OnAutoAtkSpdUpg -> OnAutoAtkUpg
+
+        GameManager.Instance.OnTestUpg += UpdateUI;
+        //GameManager.Instance.OnCriticalUpg += UpdateCritStatsUI;
+        //GameManager.Instance.OnAutoAtkSpdUpg += UpdateAutoAtkStateUI;
+        //GameManager.Instance.OnGoldBonusUpg += UpdateGoldBonusStatsUI;
     }
     private void Start()
     {
@@ -51,7 +60,10 @@ public class PlayerUpgradeUI : MonoBehaviour
     }
     private void OnDisable()
     {
-        GameManager.Instance.OnUIChange -= UpdateUI;
+        GameManager.Instance.OnTestUpg -= UpdateUI;
+        //GameManager.Instance.OnCriticalUpg -= UpdateCritStatsUI;
+        //GameManager.Instance.OnAutoAtkSpdUpg -= UpdateAutoAtkStateUI;
+        //GameManager.Instance.OnGoldBonusUpg -= UpdateGoldBonusStatsUI;
     }
     public void UpdateUI(List<TMP_Text> txt, UpgType type)
     {
