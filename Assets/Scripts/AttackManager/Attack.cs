@@ -11,6 +11,7 @@ public class Attack : MonoBehaviour
     public PlayerData playerData;
     public WeaponData weaponData;
     public Enemy enemy;
+    public StatCalculator statCalculator;
 
     public int AutoAttacklevel = 1;// 자동공격
     public int CriticalLevel = 1;
@@ -78,18 +79,11 @@ public class Attack : MonoBehaviour
     }
 
 
-    void AttackEnemy()
-    {
-        int damage = IsCriticalAtk(int.Parse("0.5")) ? playerData.attack * CriticalLevel  : playerData.attack;
-        enemy.currentHealth -= (playerData.attack + weaponData.baseDamage) *damage;  // 보너스데미지 수정해서 바꿔야됩니다.
-    }
+    //void AttackEnemy()
+    //{
+    //    int damage = IsCriticalAtk(int.Parse("0.5")) ? playerData.attack * CriticalLevel  : playerData.attack;
+    //    enemy.currentHealth -= (playerData.attack + weaponData.baseDamage) *damage;  // 보너스데미지 수정해서 바꿔야됩니다.
+    //}
 
-    bool IsCriticalAtk(float criticPer)
-    {
-        float number = Random.value;
-        //Random.Range(0, 100);
-        return (number >= criticPer); //true false 에 따라처리
-    }
-    // 치명타 확률, 치명타배율
 }
 
