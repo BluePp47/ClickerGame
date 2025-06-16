@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public event Action OnCriticalUpg;
     public event Action OnAutoAtkSpdUpg;
     public event Action OnGoldBonusUpg;
-    public event Action<List<TMP_Text>> OnTestUpg;
+    public event Action<List<TMP_Text>, UpgType> OnTestUpg;
     public void ClickCriticalUpg() => OnCriticalUpg?.Invoke();
     public void ClickAutoAtkSpdUpg() => OnAutoAtkSpdUpg?.Invoke();
     public void ClickGoldBonusUpg() => OnGoldBonusUpg?.Invoke();
