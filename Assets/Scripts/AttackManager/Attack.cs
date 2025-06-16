@@ -24,7 +24,7 @@ public class Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         StartCoroutine(AutoAttackRoutine());
+        AutoAttack();
     }
 
     // Update is called once per frame
@@ -48,11 +48,8 @@ public class Attack : MonoBehaviour
     }
     public void TotalAtk()
     {
-        // 현재 레벨 공격력 +  현재 무기 공격력 
-        //enemy.currentHealth -= (playerData.attack + weaponData.baseDamage); // 보너스데미지 수정해서 바꿔야됩니다.
-        enemy.TakeDamage(playerData.attack + weaponData.baseDamage);
+        enemy.TakeDamage(statCalculator.GetTotalDamage());
     }
-
 
     public void AutoAttack()
     {
@@ -73,17 +70,11 @@ public class Attack : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
     }
+
+    //자동공격 딜레이
     float GetAutoAttackDelay()
     {
         return Mathf.Max(0.2f, 2.0f - 0.05f * AutoAttacklevel);
     }
-
-
-    //void AttackEnemy()
-    //{
-    //    int damage = IsCriticalAtk(int.Parse("0.5")) ? playerData.attack * CriticalLevel  : playerData.attack;
-    //    enemy.currentHealth -= (playerData.attack + weaponData.baseDamage) *damage;  // 보너스데미지 수정해서 바꿔야됩니다.
-    //}
-
 }
 
