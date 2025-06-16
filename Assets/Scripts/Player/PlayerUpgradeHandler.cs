@@ -1,57 +1,32 @@
 using UnityEngine;
 
-public class PlayerUpgradeHandler : MonoBehaviour
+public class PlayerUpgradeHandler
 {
-    int sumCritLvl = 1;
+    private PlayerStatsSO data;
+
+
     public string GetLvlTitleText(string lvl)
     {
         int level = int.Parse(lvl);
-        level++;
+        level++;    
         return level.ToString();
     }
-    //public string GetLvlTitleText(UpgType type)
-    //{
-    //    //키 값을 받고 키 값에 맞게 로직 처리
-    //    // key == critical이면
-    //    int result;
+    public string GetValueText(string lvl)
+    {
+        int level = int.Parse(lvl);
+        float value = data.GetCriticalValue(level);
+        return value.ToString("F1");
+    }
+    public string GetLvlCostText(string lvl)
+    {
+        int level = int.Parse(lvl);
 
-    //    // 버튼이 눌리면 스킬레벨이 업되야함
-    //    switch (type)
-    //    {
-    //        case UpgType.Critical:
-    //            {
-    //                sumCritLvl++;
-    //                result = sumCritLvl;
-    //                return result.ToString();
-    //            }
-    //        //case UpgType.AutoAtk:
-    //        //    {
-    //        //        return autoAtk.ToString();
-    //        //    }
-    //        //case UpgType.GoldBonus:
-    //        //    {
-    //        //        return GoldBonus.ToString();
-    //        //    }
-    //    }
-        
-    //    return "a";
-    //}
+        return level.ToString();
+    }
+    public string GetCurrentGoldText(string lvl)
+    {
+        int level = int.Parse(lvl);
 
-    //public string GetValueText()
-    //{
-    //    float crit, autoAtk, GoldBonus;
-    //    return a;
-    //}
-
-    //public string GetLvlCostText()
-    //{
-    //    int crit, autoAtk, GoldBonus;
-    //    return a;
-    //}
-
-    //public string GetCurrentGoldText()
-    //{
-    //    int crit, autoAtk, GoldBonus;
-    //    return a;
-    //}
+        return level.ToString();
+    }
 }

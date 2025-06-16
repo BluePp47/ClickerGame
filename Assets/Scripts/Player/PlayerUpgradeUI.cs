@@ -2,17 +2,9 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public enum UpgType
-{
-    Critical,
-    AutoAtk,
-    GoldBonus
-}
+
 public class PlayerUpgradeUI : MonoBehaviour
 {
-    // PlayerUpg Observer
-
-    // 추후 리팩토링
     [SerializeField] private TMP_Text currentGoldTxt;
     [Header("Critical")]
     [SerializeField] private TMP_Text critLvlTitleTxt;
@@ -26,61 +18,48 @@ public class PlayerUpgradeUI : MonoBehaviour
     [SerializeField] private TMP_Text goldBonusLvlTitleTxt;
     [SerializeField] private TMP_Text goldBonusValueTxt;
     [SerializeField] private TMP_Text goldBonusLvlUpTxt;
-    // 리스트로 받기
-    [SerializeField] private List<TMP_Text> testcritBtn;
+    [Header("Button")]
+    [SerializeField] private Button criticalBtn;
+    [SerializeField] private Button autoAtkBtn;
+    [SerializeField] private Button goldBonusBtn;
 
-    [SerializeField] private Button btn;
     [SerializeField] private PlayerUpgradeHandler playerUpgHandler;
 
+    private void Awake()
+    {
+        playerUpgHandler = new PlayerUpgradeHandler();
+    }
     private void OnEnable()
     {
         // GM Rename OnAutoAtkSpdUpg -> OnAutoAtkUpg
 
         GameManager.Instance.OnTestUpg += UpdateUI;
         //GameManager.Instance.OnCriticalUpg += UpdateCritStatsUI;
-        GameManager.Instance.OnAutoAtkSpdUpg += UpdateAutoAtkStateUI;
-        GameManager.Instance.OnGoldBonusUpg += UpdateGoldBonusStatsUI;
+        //GameManager.Instance.OnAutoAtkSpdUpg += UpdateAutoAtkStateUI;
+        //GameManager.Instance.OnGoldBonusUpg += UpdateGoldBonusStatsUI;
     }
     private void Start()
     {
-        List<TMP_Text> testlist = new List<TMP_Text> { critLvlTitleTxt, critValueTxt, autoAtkLvlUpTxt, currentGoldTxt };
-        btn.onClick.AddListener(() => UpdateUI(testlist));
+        List<TMP_Text> criticalLIst = new List<TMP_Text> { critLvlTitleTxt, critValueTxt, critLvlUpTxt, currentGoldTxt };
+        List<TMP_Text> autoAtkLIst = new List<TMP_Text> { autoAtkLvlTitleTxt, autoAtkValueTxt, autoAtkLvlUpTxt, currentGoldTxt };
+        List<TMP_Text> goldBonusLIst = new List<TMP_Text> { goldBonusLvlTitleTxt, goldBonusValueTxt, goldBonusLvlUpTxt, currentGoldTxt };
+        criticalBtn.onClick.AddListener(() => UpdateUI(criticalLIst));
+        autoAtkBtn.onClick.AddListener(() => UpdateUI(autoAtkLIst));
+        goldBonusBtn.onClick.AddListener(() => UpdateUI(goldBonusLIst));
     }
     private void OnDisable()
     {
         GameManager.Instance.OnTestUpg -= UpdateUI;
-        GameManager.Instance.OnCriticalUpg -= UpdateCritStatsUI;
-        GameManager.Instance.OnAutoAtkSpdUpg -= UpdateAutoAtkStateUI;
-        GameManager.Instance.OnGoldBonusUpg -= UpdateGoldBonusStatsUI;
+        //GameManager.Instance.OnCriticalUpg -= UpdateCritStatsUI;
+        //GameManager.Instance.OnAutoAtkSpdUpg -= UpdateAutoAtkStateUI;
+        //GameManager.Instance.OnGoldBonusUpg -= UpdateGoldBonusStatsUI;
     }
     public void UpdateUI(List<TMP_Text> txt)
     {
         txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);
-        //text = playerUpgHandler.GetValueText();
-        //text = playerUpgHandler.GetLvlCostText();
-        //text = playerUpgHandler.GetCurrentGoldText();
+        txt[1].text = playerUpgHandler.GetValueText(txt[1].text);
+        txt[2].text = playerUpgHandler.GetLvlCostText(txt[2].text);
+        txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[3].text);
     }
 
-
-    public void UpdateCritStatsUI()
-    {
-        //critLvlTitleTxt.text = playerUpgHandler.GetLvlTitleText(UpgType.Critical);
-        //critValueTxt.text = playerUpgHandler.GetValueText();
-        //critLvlUpTxt.text = playerUpgHandler.GetLvlCostText();
-        //currentGoldTxt.text = playerUpgHandler.GetCurrentGoldText();
-    }
-    public void UpdateAutoAtkStateUI()
-    {
-        //autoAtkSpdCntTxt.text = 
-        //autoAtkSpdTxt.text = 
-        //autoAtkSpdCostTxt.text = 
-        //autoAtkSpdCurrentTxt.text = 
-    }
-    public void UpdateGoldBonusStatsUI()
-    {
-        //goldBonusCntTxt.text = 
-        //goldBonusTxt.text = 
-        //goldBonusCostTxt.text = 
-        //goldBonusCurrentTxt.text = 
-    }
 }
