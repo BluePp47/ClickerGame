@@ -10,8 +10,9 @@ public class Attack : MonoBehaviour
     EnemyData enemyData;
     public PlayerData playerData;
     public WeaponData weaponData;
+    public Enemy enemy;
 
-    public int AutoAttacklevel = 0;// 자동공격
+    public int AutoAttacklevel = 1;// 자동공격
     public int CriticalLevel = 1;
     public float TouchAttackCoolDown = 0.2f;//터치 쿨다운
     public float LastAtkTouch;
@@ -41,8 +42,14 @@ public class Attack : MonoBehaviour
         //Input.GetMouseButtonDown(0)가 안에 있으면 의미가 없다.
         if (IsAttackTouch && Input.GetMouseButtonDown(0) && (LastAtkTouch > TouchAttackCoolDown))
         {
-            enemyData.enemyHealth -= (playerData.attack + weaponData.baseDamage); // 보너스데미지 수정해서 바꿔야됩니다.
+            TotalAtk();
         }
+    }
+    public void TotalAtk()
+    {
+        // 현재 레벨 공격력 +  현재 무기 공격력 
+        //enemy.currentHealth -= (playerData.attack + weaponData.baseDamage); // 보너스데미지 수정해서 바꿔야됩니다.
+        enemy.TakeDamage(playerData.attack + weaponData.baseDamage);
     }
 
 
@@ -60,20 +67,21 @@ public class Attack : MonoBehaviour
         while (true)
         {
             // 공격시 데미지 계산 추가
+            TotalAtk();
             float delay = GetAutoAttackDelay();
             yield return new WaitForSeconds(delay);
         }
     }
     float GetAutoAttackDelay()
     {
-        return Mathf.Max(0.2f, 2.0f - 0.1f * AutoAttacklevel);
+        return Mathf.Max(0.2f, 2.0f - 0.05f * AutoAttacklevel);
     }
 
 
     void AttackEnemy()
     {
         int damage = IsCriticalAtk(int.Parse("0.5")) ? playerData.attack * CriticalLevel  : playerData.attack;
-        enemyData.enemyHealth -= (playerData.attack + weaponData.baseDamage) *damage;  // 보너스데미지 수정해서 바꿔야됩니다.
+        enemy.currentHealth -= (playerData.attack + weaponData.baseDamage) *damage;  // 보너스데미지 수정해서 바꿔야됩니다.
     }
 
     bool IsCriticalAtk(float criticPer)

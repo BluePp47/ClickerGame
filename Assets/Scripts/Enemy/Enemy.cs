@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 // 개별 적에 붙는 스크립트
 public class Enemy : MonoBehaviour
 {
     public EnemyData enemyData; // 적의 데이터 (스탯 등)
+    public Attack attack;
 
-    private int currentHealth;
+    public int currentHealth;
 
     void Start()
     {
@@ -14,6 +16,11 @@ public class Enemy : MonoBehaviour
         int currentStageNumber = stageManager != null ? stageManager.currentStage.stageNumber : 1;
 
         currentHealth = enemyData.GetHealthForStage(currentStageNumber);
+
+        if (Input.GetMouseButton(0))
+        {
+            TakeDamage(10);
+        }
     }
 
     // 데미지를 받는 함수
