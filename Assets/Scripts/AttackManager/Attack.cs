@@ -10,6 +10,7 @@ public class Attack : MonoBehaviour
     EnemyData enemyData;
     public PlayerData playerData;
     public WeaponData weaponData;
+    public Enemy enemy;
 
     public int AutoAttacklevel = 0;// 자동공격
     public int CriticalLevel = 1;
@@ -41,8 +42,13 @@ public class Attack : MonoBehaviour
         //Input.GetMouseButtonDown(0)가 안에 있으면 의미가 없다.
         if (IsAttackTouch && Input.GetMouseButtonDown(0) && (LastAtkTouch > TouchAttackCoolDown))
         {
-            enemyData.enemyHealth -= (playerData.attack + weaponData.baseDamage); // 보너스데미지 수정해서 바꿔야됩니다.
+            TotalAtk();
         }
+    }
+    public void TotalAtk()
+    {
+        // 현재 레벨 공격력 +  현재 무기 공격력 
+        enemyData.enemyHealth -= (playerData.attack + weaponData.baseDamage); // 보너스데미지 수정해서 바꿔야됩니다.
     }
 
 
@@ -66,7 +72,7 @@ public class Attack : MonoBehaviour
     }
     float GetAutoAttackDelay()
     {
-        return Mathf.Max(0.2f, 2.0f - 0.1f * AutoAttacklevel);
+        return Mathf.Max(0.2f, 2.0f - 0.05f * AutoAttacklevel);
     }
 
 
