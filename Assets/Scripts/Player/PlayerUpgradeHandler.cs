@@ -1,57 +1,41 @@
 using UnityEngine;
 
-public class PlayerUpgradeHandler : MonoBehaviour
+public class PlayerUpgradeHandler
 {
-    int sumCritLvl = 1;
-    public string GetLvlTitleText(string lvl)
+    private PlayerStatsSO data;
+
+    private int critLvl = 1;
+    private int autoAtkLvl = 1;
+    private int goldBonusLvl = 1;
+    public int CritLvl => critLvl;
+    public int AutoAtkLvl => autoAtkLvl;
+    public int GoldBonusLvl => goldBonusLvl;
+
+    public string GetLvlTitleText(string level)
     {
-        int level = int.Parse(lvl);
-        level++;
-        return level.ToString();
+        int lvl = int.Parse(level);
+        lvl++;
+        return lvl.ToString();
     }
-    //public string GetLvlTitleText(UpgType type)
+    public string GetValueText(string lvl)
+    {
+        float value = data.GetCriticalValue(lvl);
+        return value.ToString("F1");
+    }
+    //public string GetLvlCostText(string lvl)
     //{
-    //    //키 값을 받고 키 값에 맞게 로직 처리
-    //    // key == critical이면
-    //    int result;
+    //    int level = int.Parse(lvl);
 
-    //    // 버튼이 눌리면 스킬레벨이 업되야함
-    //    switch (type)
-    //    {
-    //        case UpgType.Critical:
-    //            {
-    //                sumCritLvl++;
-    //                result = sumCritLvl;
-    //                return result.ToString();
-    //            }
-    //        //case UpgType.AutoAtk:
-    //        //    {
-    //        //        return autoAtk.ToString();
-    //        //    }
-    //        //case UpgType.GoldBonus:
-    //        //    {
-    //        //        return GoldBonus.ToString();
-    //        //    }
-    //    }
-        
-    //    return "a";
+    //    return level.ToString();
     //}
-
-    //public string GetValueText()
+    //public string GetCurrentGoldText(string lvl)
     //{
-    //    float crit, autoAtk, GoldBonus;
-    //    return a;
-    //}
+    //    int level = int.Parse(lvl);
 
-    //public string GetLvlCostText()
-    //{
-    //    int crit, autoAtk, GoldBonus;
-    //    return a;
+    //    return level.ToString();
     //}
-
-    //public string GetCurrentGoldText()
-    //{
-    //    int crit, autoAtk, GoldBonus;
-    //    return a;
-    //}
+    public PlayerUpgradeHandler(PlayerStatsSO statsdata)
+    {
+        data = statsdata;
+    }
 }

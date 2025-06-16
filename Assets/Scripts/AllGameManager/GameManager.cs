@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             playerData = new PlayerData(); //
-            currencyManager = new CurrencyManager(playerData,goldText, this);
+            //currencyManager = new CurrencyManager(playerData,goldText, this);
             audioManager = FindObjectOfType<AudioManager>();
         }
         else Destroy(gameObject);
