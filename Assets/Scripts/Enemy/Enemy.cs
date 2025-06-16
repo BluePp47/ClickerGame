@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     public EnemyData enemyData;     // 이 적이 어떤 종류인지에 대한 데이터
     public int currentHealth;       // 현재 체력
+    private int maxHealth;
+
+    public Slider hpSlider;
 
     // 외부에서 초기화할 수 있도록 Init 메서드 제공
     public void Init(EnemyData data, int stageNumber)
     {
         enemyData = data;
         currentHealth = enemyData.GetHealthForStage(stageNumber);
+        currentHealth = maxHealth;
+        UpdateHPUI(); // 체력 슬라이더 갱신
     }
 
     void Update()
@@ -28,9 +33,22 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= amount;
 
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        // 체력 UI 업데이트
+        UpdateHPUI();
+
         if (currentHealth <= 0)
         {
             Die();
+        }
+    }
+
+    // 체력 UI 업데이트
+    void UpdateHPUI()
+    {
+        if (hpSlider != null)
+        {
+            hpSlider.value = (float)currentHealth / maxHealth;
         }
     }
 
