@@ -39,7 +39,7 @@ public class PlayerUpgradeUI : MonoBehaviour
     }
     private void OnEnable()
     {
-        GameManager.Instance.OnTestUpg += UpdateUI;
+        GameManager.Instance.OnUpdateUI += UpdateUI;
     }
     private void Start()
     {
@@ -52,7 +52,7 @@ public class PlayerUpgradeUI : MonoBehaviour
     }
     private void OnDisable()
     {
-        GameManager.Instance.OnTestUpg -= UpdateUI;
+        GameManager.Instance.OnUpdateUI -= UpdateUI;
     }
     public void UpdateUI(List<TMP_Text> txt, UpgType type)
     {
