@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StageData", menuName = "Stage/Stage Data")]
 public class StageData : ScriptableObject
 {
-    public int stageNumber; // 스테이지 번호 (0부터 시작)
+    public int stageNumber; // 스테이지 번호 
     public float stageDuration = 90f; // 해당 스테이지의 제한 시간
     public int killsToNext = 5; // 다음 스테이지로 넘어가기 위한 처치 수
 
