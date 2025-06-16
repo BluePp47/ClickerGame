@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public EnemyData enemyData; // 적의 데이터 (스탯 등)
+    public Attack attack;
 
     public int currentHealth;
 
