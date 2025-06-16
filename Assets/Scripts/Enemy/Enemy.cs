@@ -52,10 +52,4 @@ public class Enemy : MonoBehaviour
 
         Destroy(gameObject); // 본인 제거
     }
-
-    // 마우스로 클릭 시 데미지 (클릭커 게임용)
-    void OnMouseDown()
-    {
-        TakeDamage(1); // 클릭 시 데미지 1
-    }
 }
