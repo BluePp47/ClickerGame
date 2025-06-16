@@ -14,16 +14,14 @@ public class PlayerStatsSO : ScriptableObject
         float result = critGrowthPerLvl * (lvl);
         return result;
     }
-    public float GetAutoAtkValue(string level)
+    public float GetAutoAtkValue(int level)
     {
-        float lvl = float.Parse(level);
-        float result = autoAtkPerLvl * lvl;
+        float result = autoAtkPerLvl * level;
         return result;
     }
-    public float GetGoldBonusValue(string level)
+    public float GetGoldBonusValue(int level)
     {
-        float lvl = float.Parse(level);
-        float result = goldBonusPerLvl * lvl;
+        float result = goldBonusPerLvl * level;
         return result;
     }
 }
