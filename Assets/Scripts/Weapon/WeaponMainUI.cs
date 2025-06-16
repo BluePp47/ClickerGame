@@ -8,23 +8,19 @@ public class WeaponMainUI : MonoBehaviour
 {
     public Image iconImage;
     public TextMeshProUGUI nameText;
-
     public WeaponManager weaponManager;
-
-    private void Start()
-    {
-        UpdateUI();
-    }
 
     public void UpdateUI()
     {
         WeaponData best = weaponManager.GetBestWeapon();
-
         if (best != null)
         {
             iconImage.sprite = best.icon;
             iconImage.color = Color.white;
             nameText.text = best.weaponName;
+
+            int level = weaponManager.GetWeaponLevel(best);
+            int damage = best.GetDamageAtLevel(level);
         }
         else
         {

@@ -41,8 +41,7 @@ public class Attack : MonoBehaviour
         //Input.GetMouseButtonDown(0)가 안에 있으면 의미가 없다.
         if (IsAttackTouch && Input.GetMouseButtonDown(0) && (LastAtkTouch > TouchAttackCoolDown))
         {
-            enemyData.enemyHealth -= (playerData.attack + weaponData.bonusDamage);
-            LastAtkTouch = 0;
+            enemyData.enemyHealth -= (playerData.attack + weaponData.baseDamage); // 보너스데미지 수정해서 바꿔야됩니다.
         }
     }
 
@@ -74,7 +73,7 @@ public class Attack : MonoBehaviour
     void AttackEnemy()
     {
         int damage = IsCriticalAtk(int.Parse("0.5")) ? playerData.attack * CriticalLevel  : playerData.attack;
-        enemyData.enemyHealth -= (playerData.attack + weaponData.bonusDamage)*damage;
+        enemyData.enemyHealth -= (playerData.attack + weaponData.baseDamage) *damage;  // 보너스데미지 수정해서 바꿔야됩니다.
     }
 
     bool IsCriticalAtk(float criticPer)

@@ -6,22 +6,43 @@ public class WeaponManager : MonoBehaviour
 {
     public List<WeaponData> allWeapons;
     public List<WeaponData> ownedWeapons = new();
+    public Dictionary<WeaponData, int> weaponLevels = new();
 
-    public bool TryBuyWeapon(WeaponData weapon)
+    public bool TryBuyWeapon(WeaponData weapon, int playerGold, out int cost)
     {
-        if (ownedWeapons.Contains(weapon)) return false;
+        cost = weapon.basePrice;
+        if (ownedWeapons.Contains(weapon))
+            return false;
 
-        // TODO: 골드 확인 로직 넣기
+        if (playerGold < cost)
+            return false;
+
         ownedWeapons.Add(weapon);
+        weaponLevels[weapon] = 0;
         return true;
     }
 
-    public int GetTotalBonusDamage()
+    public bool TryUpgradeWeapon(WeaponData weapon, int playerGold, out int cost)
     {
-        int total = 0;
-        foreach (var w in ownedWeapons)
-            total += w.bonusDamage;
-        return total;
+        if (weapon == null || !ownedWeapons.Contains(weapon))
+        {
+            cost = 0;
+            return false;
+        }
+
+        int currentLevel = GetWeaponLevel(weapon);
+        cost = weapon.GetUpgradeCost(currentLevel);
+
+        if (playerGold < cost)
+            return false;
+
+        weaponLevels[weapon] = currentLevel + 1;
+        return true;
+    }
+
+    public int GetWeaponLevel(WeaponData weapon)
+    {
+        return weaponLevels.ContainsKey(weapon) ? weaponLevels[weapon] : 0;
     }
 
     public WeaponData GetBestWeapon()
@@ -29,12 +50,14 @@ public class WeaponManager : MonoBehaviour
         WeaponData best = null;
         int maxDamage = int.MinValue;
 
-        foreach (var w in ownedWeapons)
+        foreach (var weapon in ownedWeapons)
         {
-            if (w.bonusDamage > maxDamage)
+            int level = GetWeaponLevel(weapon);
+            int dmg = weapon.GetDamageAtLevel(level);
+            if (dmg > maxDamage)
             {
-                maxDamage = w.bonusDamage;
-                best = w;
+                best = weapon;
+                maxDamage = dmg;
             }
         }
 
