@@ -43,6 +43,9 @@ public class PlayerUpgradeUI : MonoBehaviour
     }
     private void Start()
     {
+        // 리스트 선언과 초기화를
+        // 여기선 선언만 
+        // 위에 시리얼필드에서 리스트 인스펙터 연결을
         List<TMP_Text> criticalLIst = new List<TMP_Text> { critLvlTitleTxt, critValueTxt, critCostTxt, currentGoldTxt };
         List<TMP_Text> autoAtkLIst = new List<TMP_Text> { autoAtkLvlTitleTxt, autoAtkValueTxt, autoAtkCostTxt, currentGoldTxt };
         List<TMP_Text> goldBonusLIst = new List<TMP_Text> { goldBonusLvlTitleTxt, goldBonusValueTxt, goldBonusCostTxt, currentGoldTxt };
@@ -58,10 +61,14 @@ public class PlayerUpgradeUI : MonoBehaviour
     {
         int currentGold = int.Parse(txt[3].text);
 
-        txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);    // Lvl Txt
-        txt[1].text = playerUpgHandler.GetValueText(txt[0].text, type); // Value Txt
-        txt[2].text = playerUpgHandler.GetLvlCostText(txt[0].text);     // Cost Txt
+        txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);                 // Lvl Txt
+        txt[1].text = playerUpgHandler.GetValueText(txt[0].text, type);              // Value Txt
+        txt[2].text = playerUpgHandler.GetLvlCostText(txt[0].text);                  // Cost Txt
         txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[0].text, currentGold); // CurrentGold Txt
+    }
+    public void TryUpgrade(UpgType type)
+    {
+
     }
 
 }

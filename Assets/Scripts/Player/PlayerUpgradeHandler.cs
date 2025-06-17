@@ -20,14 +20,18 @@ public class PlayerUpgradeHandler
     public string GetValueText(string level, UpgType type)
     {
         float value = 0f;
+
         switch (type)
         {
             case UpgType.Critical:
-                value = data.GetCriticalValue(level); break;
+                value = data.GetCriticalValue(level);
+                return ($"{value}%");
             case UpgType.AutoAttack:
-                value = data.GetAutoAtkValue(level); break;
+                value = data.GetAutoAtkValue(level);
+                return ($"{value}È¸/ÃÊ");
             case UpgType.GoldBonus:
-                value = data.GetGoldBonusValue(level); break;
+                value = data.GetGoldBonusValue(level);
+                return ($"{value}%");
         }
         return value.ToString("N1");
     }
@@ -44,6 +48,11 @@ public class PlayerUpgradeHandler
         int cost = lvl * costGrowthPerLvl;
         int value = Gold - cost;
         return value.ToString();
+    }
+    public void CanUpgrade()
+    {
+        // currentGold >= cost
+
     }
     public PlayerUpgradeHandler(PlayerStatsSO statsdata)
     {
