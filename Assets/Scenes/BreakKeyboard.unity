@@ -1143,17 +1143,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 762966331}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ToggleOptionPanel
-        m_Mode: 1
+      - m_Target: {fileID: 1826894921}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &270118989
 MonoBehaviour:
@@ -1842,7 +1842,7 @@ GameObject:
   - component: {fileID: 376134493}
   - component: {fileID: 376134492}
   m_Layer: 5
-  m_Name: AutoAtkLvlUpValueText
+  m_Name: AutoAtkCostValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2988,7 +2988,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 0%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
   m_sharedMaterial: {fileID: 4804673219077872049, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
@@ -3237,7 +3237,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.0
+  m_text: 0%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
   m_sharedMaterial: {fileID: 4804673219077872049, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
@@ -3323,7 +3323,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 762966330}
-  - component: {fileID: 762966331}
   m_Layer: 5
   m_Name: UserUI
   m_TagString: Untagged
@@ -3356,26 +3355,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 760, y: 548.102}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &762966331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762966329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199ce88f716bef04f88c36912d9dee5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData:
-    gold: 10000
-    stage: 1
-    attack: 10
-    level: 1
-  audioManager: {fileID: 462284311}
-  goldText: {fileID: 1162092959}
-  optionPanel: {fileID: 1826894921}
 --- !u!1 &764957643
 GameObject:
   m_ObjectHideFlags: 0
@@ -4358,7 +4337,7 @@ GameObject:
   - component: {fileID: 986576136}
   - component: {fileID: 986576135}
   m_Layer: 5
-  m_Name: CritLvlUpValueText
+  m_Name: CritCostValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4681,7 +4660,6 @@ MonoBehaviour:
     level: 1
   audioManager: {fileID: 462284311}
   goldText: {fileID: 1162092959}
-  optionPanel: {fileID: 1826894921}
 --- !u!4 &1062469084
 Transform:
   m_ObjectHideFlags: 0
@@ -7094,7 +7072,7 @@ GameObject:
   - component: {fileID: 1857679616}
   - component: {fileID: 1857679615}
   m_Layer: 5
-  m_Name: GoldBonusLvlUpValueText
+  m_Name: GoldBonusCostValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7780,7 +7758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.0
+  m_text: "0.0\uD68C/\uCD08"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
   m_sharedMaterial: {fileID: 4804673219077872049, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
@@ -8531,13 +8509,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   critLvlTitleTxt: {fileID: 102135699}
   critValueTxt: {fileID: 747832920}
-  critLvlUpTxt: {fileID: 986576135}
+  critCostTxt: {fileID: 986576135}
   autoAtkLvlTitleTxt: {fileID: 1918477899}
   autoAtkValueTxt: {fileID: 1912919717}
-  autoAtkLvlUpTxt: {fileID: 376134492}
+  autoAtkCostTxt: {fileID: 376134492}
   goldBonusLvlTitleTxt: {fileID: 1203780852}
   goldBonusValueTxt: {fileID: 677372455}
-  goldBonusLvlUpTxt: {fileID: 1857679615}
+  goldBonusCostTxt: {fileID: 1857679615}
   criticalBtn: {fileID: 1094117476}
   autoAtkBtn: {fileID: 257927370}
   goldBonusBtn: {fileID: 155239914}
@@ -9016,10 +8994,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 762966331}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CloseOptionPanel
-        m_Mode: 1
+      - m_Target: {fileID: 1826894921}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

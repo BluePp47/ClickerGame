@@ -1383,6 +1383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 688316197698284186}
+  - component: {fileID: 688316197698284187}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1405,6 +1406,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &688316197698284187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688316197698284185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199ce88f716bef04f88c36912d9dee5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    gold: 10000
+    stage: 1
+    attack: 10
+    level: 1
+  audioManager: {fileID: 0}
+  goldText: {fileID: 0}
 --- !u!222 &1259583963879042517
 CanvasRenderer:
   m_ObjectHideFlags: 0
