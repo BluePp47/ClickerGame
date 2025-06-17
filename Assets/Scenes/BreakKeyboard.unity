@@ -8521,6 +8521,18 @@ MonoBehaviour:
   goldBonusBtn: {fileID: 155239914}
   currentGoldTxt: {fileID: 384773006}
   statsSO: {fileID: 11400000, guid: 30bc442be1e312b40b058fa84d69cb39, type: 2}
+  criticalLIst:
+  - {fileID: 102135699}
+  - {fileID: 747832920}
+  - {fileID: 986576135}
+  autoAtkLIst:
+  - {fileID: 1918477899}
+  - {fileID: 1912919717}
+  - {fileID: 376134492}
+  goldBonusLIst:
+  - {fileID: 1203780852}
+  - {fileID: 677372455}
+  - {fileID: 1857679615}
 --- !u!4 &2046663001
 Transform:
   m_ObjectHideFlags: 0

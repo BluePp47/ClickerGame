@@ -4,13 +4,6 @@ public class PlayerUpgradeHandler
 {
     private PlayerStatsSO data;
 
-    private int critLvl = 1;
-    private int autoAtkLvl = 1;
-    private int goldBonusLvl = 1;
-    public int CritLvl => critLvl;
-    public int AutoAtkLvl => autoAtkLvl;
-    public int GoldBonusLvl => goldBonusLvl;
-
     public string GetLvlTitleText(string level)
     {
         int lvl = int.Parse(level);
@@ -48,12 +41,7 @@ public class PlayerUpgradeHandler
         int cost = lvl * costGrowthPerLvl;
         int value = Gold - cost;
         return value.ToString();
-    }
-    public void CanUpgrade()
-    {
-        // currentGold >= cost
-
-    }
+    } 
     public PlayerUpgradeHandler(PlayerStatsSO statsdata)
     {
         data = statsdata;

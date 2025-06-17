@@ -12,18 +12,10 @@ public enum UpgType
 
 public class PlayerUpgradeUI : MonoBehaviour
 {
-    [Header("Critical")]
-    [SerializeField] private TMP_Text critLvlTitleTxt;
-    [SerializeField] private TMP_Text critValueTxt;
-    [SerializeField] private TMP_Text critCostTxt;
-    [Header("AutoAtk")]
-    [SerializeField] private TMP_Text autoAtkLvlTitleTxt;
-    [SerializeField] private TMP_Text autoAtkValueTxt;
-    [SerializeField] private TMP_Text autoAtkCostTxt;
-    [Header("GoldBonus")]
-    [SerializeField] private TMP_Text goldBonusLvlTitleTxt;
-    [SerializeField] private TMP_Text goldBonusValueTxt;
-    [SerializeField] private TMP_Text goldBonusCostTxt;
+    [Header("List")]
+    [SerializeField] private List<TMP_Text> criticalLIst;
+    [SerializeField] private List<TMP_Text> autoAtkLIst;
+    [SerializeField] private List<TMP_Text> goldBonusLIst;
     [Header("Button")]
     [SerializeField] private Button criticalBtn;
     [SerializeField] private Button autoAtkBtn;
@@ -32,7 +24,6 @@ public class PlayerUpgradeUI : MonoBehaviour
     [SerializeField] private TMP_Text currentGoldTxt;
     [SerializeField] private PlayerUpgradeHandler playerUpgHandler;
     [SerializeField] private PlayerStatsSO statsSO;
-
     private void Awake()
     {
         playerUpgHandler = new PlayerUpgradeHandler(statsSO);
@@ -43,12 +34,6 @@ public class PlayerUpgradeUI : MonoBehaviour
     }
     private void Start()
     {
-        // 리스트 선언과 초기화를
-        // 여기선 선언만 
-        // 위에 시리얼필드에서 리스트 인스펙터 연결을
-        List<TMP_Text> criticalLIst = new List<TMP_Text> { critLvlTitleTxt, critValueTxt, critCostTxt, currentGoldTxt };
-        List<TMP_Text> autoAtkLIst = new List<TMP_Text> { autoAtkLvlTitleTxt, autoAtkValueTxt, autoAtkCostTxt, currentGoldTxt };
-        List<TMP_Text> goldBonusLIst = new List<TMP_Text> { goldBonusLvlTitleTxt, goldBonusValueTxt, goldBonusCostTxt, currentGoldTxt };
         criticalBtn.onClick.AddListener(() => UpdateUI(criticalLIst, UpgType.Critical));
         autoAtkBtn.onClick.AddListener(() => UpdateUI(autoAtkLIst, UpgType.AutoAttack));
         goldBonusBtn.onClick.AddListener(() => UpdateUI(goldBonusLIst, UpgType.GoldBonus));
@@ -66,9 +51,29 @@ public class PlayerUpgradeUI : MonoBehaviour
         txt[2].text = playerUpgHandler.GetLvlCostText(txt[0].text);                  // Cost Txt
         txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[0].text, currentGold); // CurrentGold Txt
     }
-    public void TryUpgrade(UpgType type)
+    public void TryUpgrade(List<TMP_Text> txt, UpgType type)
     {
+        int currentGold = int.Parse(txt[3].text);
+        int cost = int.Parse(txt[2].text);
+        bool canUpgrade = currentGold >= cost;
 
+        Button btn = GetButtonByType(type);
+        btn.interactable = canUpgrade;
+
+        txt[2].color = canUpgrade ? Color.white : Color.red;
     }
-
+    private Button GetButtonByType(UpgType type)
+    {
+        switch (type)
+        {
+            case UpgType.Critical:
+                return criticalBtn;
+            case UpgType.AutoAttack:
+                return autoAtkBtn;
+            case UpgType.GoldBonus:
+                return goldBonusBtn;
+            default:
+                return null;
+        }
+    }
 }
