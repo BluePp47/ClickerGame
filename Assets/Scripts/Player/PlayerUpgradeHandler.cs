@@ -11,15 +11,10 @@ public class PlayerUpgradeHandler
     public int AutoAtkLvl => autoAtkLvl;
     public int GoldBonusLvl => goldBonusLvl;
 
-    //public string GetCurrentGoldText(string lvl)
-    //{
-    //    // 버튼이 눌리면 코스트만큼 현재 골드 차감
-    //    // value = currentGold - cost
-    //    // return value
+    //test
+    private int currentGold = 10000;
+    private int cost = 10;
 
-    //    int level = int.Parse(lvl);
-    //    return level.ToString();
-    //}
     public string GetLvlTitleText(string level)
     {
         int lvl = int.Parse(level);
@@ -40,18 +35,22 @@ public class PlayerUpgradeHandler
         }
         return value.ToString("N1");
     }
-    // 소지금액이 먼저 깎이고 cost가 증가해야함
-    // cost == 10
-    // currentGold -10
-    // cost == 20
-    //public string GetLvlCostText(string lvl)
-    //{
-    //    // cost += 10
-    //    // 버튼이 눌리면 코스트 +10 씩 증가
-
-    //    int level = int.Parse(lvl);
-    //    return level.ToString();
-    //}
+    public string GetLvlCostText(string lvl)
+    {
+        int cost = data.GetCostValue(lvl);//레벨별 cost 계산
+        int value
+        return value.ToString();
+    }
+    public string GetCurrentGoldText(string lvl)
+    {
+        // 버튼이 눌리면 코스트만큼 현재 골드 차감
+        // value = currentGold - cost
+        // return value
+        // 인자로 cost를 받고 curGold값을 
+        int level = int.Parse(lvl);
+        int value = currentGold - cost;
+        return value.ToString();
+    }
     public PlayerUpgradeHandler(PlayerStatsSO statsdata)
     {
         data = statsdata;

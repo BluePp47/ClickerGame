@@ -15,15 +15,15 @@ public class PlayerUpgradeUI : MonoBehaviour
     [Header("Critical")]
     [SerializeField] private TMP_Text critLvlTitleTxt;
     [SerializeField] private TMP_Text critValueTxt;
-    [SerializeField] private TMP_Text critLvlUpTxt;
+    [SerializeField] private TMP_Text critCostTxt;
     [Header("AutoAtk")]
     [SerializeField] private TMP_Text autoAtkLvlTitleTxt;
     [SerializeField] private TMP_Text autoAtkValueTxt;
-    [SerializeField] private TMP_Text autoAtkLvlUpTxt;
+    [SerializeField] private TMP_Text autoAtkCostTxt;
     [Header("GoldBonus")]
     [SerializeField] private TMP_Text goldBonusLvlTitleTxt;
     [SerializeField] private TMP_Text goldBonusValueTxt;
-    [SerializeField] private TMP_Text goldBonusLvlUpTxt;
+    [SerializeField] private TMP_Text goldBonusCostTxt;
     [Header("Button")]
     [SerializeField] private Button criticalBtn;
     [SerializeField] private Button autoAtkBtn;
@@ -43,9 +43,9 @@ public class PlayerUpgradeUI : MonoBehaviour
     }
     private void Start()
     {
-        List<TMP_Text> criticalLIst = new List<TMP_Text> { currentGoldTxt, critLvlTitleTxt, critValueTxt, critLvlUpTxt };
-        List<TMP_Text> autoAtkLIst = new List<TMP_Text> { currentGoldTxt, autoAtkLvlTitleTxt, autoAtkValueTxt, autoAtkLvlUpTxt };
-        List<TMP_Text> goldBonusLIst = new List<TMP_Text> { currentGoldTxt, goldBonusLvlTitleTxt, goldBonusValueTxt, goldBonusLvlUpTxt };
+        List<TMP_Text> criticalLIst = new List<TMP_Text> { currentGoldTxt, critLvlTitleTxt, critValueTxt, critCostTxt };
+        List<TMP_Text> autoAtkLIst = new List<TMP_Text> { currentGoldTxt, autoAtkLvlTitleTxt, autoAtkValueTxt, autoAtkCostTxt };
+        List<TMP_Text> goldBonusLIst = new List<TMP_Text> { currentGoldTxt, goldBonusLvlTitleTxt, goldBonusValueTxt, goldBonusCostTxt };
         criticalBtn.onClick.AddListener(() => UpdateUI(criticalLIst, UpgType.Critical));
         autoAtkBtn.onClick.AddListener(() => UpdateUI(autoAtkLIst, UpgType.AutoAttack));
         goldBonusBtn.onClick.AddListener(() => UpdateUI(goldBonusLIst, UpgType.GoldBonus));
@@ -56,10 +56,10 @@ public class PlayerUpgradeUI : MonoBehaviour
     }
     public void UpdateUI(List<TMP_Text> txt, UpgType type)
     {
-        //txt[0].text = playerUpgHandler.GetCurrentGoldText(txt[0].text);    // CurrentGold Txt
-        txt[1].text = playerUpgHandler.GetLvlTitleText(txt[1].text);       // Lvl Txt
-        txt[2].text = playerUpgHandler.GetValueText(txt[1].text, type);    // Value Txt
-        //txt[3].text = playerUpgHandler.GetLvlCostText(txt[0].text);        // Cost Txt
+        txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);    // Lvl Txt
+        txt[1].text = playerUpgHandler.GetValueText(txt[0].text, type); // Value Txt
+        txt[2].text = playerUpgHandler.GetLvlCostText(txt[0].text);     // Cost Txt
+        txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[0].text); // CurrentGold Txt
     }
-    
+
 }

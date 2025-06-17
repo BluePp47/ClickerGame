@@ -428,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 137548360}
   m_Layer: 5
-  m_Name: CritValueTextGroup
+  m_Name: CritTitleTextGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
   m_sharedMaterial: {fileID: 4804673219077872049, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
@@ -1817,7 +1817,7 @@ GameObject:
   - component: {fileID: 584374122}
   - component: {fileID: 584374121}
   m_Layer: 5
-  m_Name: AutoAtkLvlUpValueText
+  m_Name: AutoAtkCostValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2083,7 +2083,7 @@ GameObject:
   m_Component:
   - component: {fileID: 610424772}
   m_Layer: 5
-  m_Name: CritTItleTextGroup
+  m_Name: CritValueTextGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3308,7 +3308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
   m_sharedMaterial: {fileID: 4804673219077872049, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
@@ -4684,7 +4684,7 @@ GameObject:
   - component: {fileID: 1168728010}
   - component: {fileID: 1168728009}
   m_Layer: 5
-  m_Name: CritLvlUpValueText
+  m_Name: CritCostValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5060,7 +5060,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 440, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1312545399
 GameObject:
@@ -5730,7 +5730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ba5c3411f5beb43861f3c2819ebf40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGoldTxt: {fileID: 1438674379}
   critLvlTitleTxt: {fileID: 1916995537}
   critValueTxt: {fileID: 254420525}
   critLvlUpTxt: {fileID: 1168728009}
@@ -5743,6 +5742,7 @@ MonoBehaviour:
   criticalBtn: {fileID: 821875071}
   autoAtkBtn: {fileID: 1088135924}
   goldBonusBtn: {fileID: 691713847}
+  currentGoldTxt: {fileID: 1438674379}
   statsSO: {fileID: 11400000, guid: 30bc442be1e312b40b058fa84d69cb39, type: 2}
 --- !u!4 &1422310288
 Transform:
@@ -7185,7 +7185,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 440, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1728349301
 GameObject:
@@ -7793,7 +7793,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
   m_sharedMaterial: {fileID: 4804673219077872049, guid: 0578f940ad2fd774e95e50f5233ffcf8, type: 2}
@@ -8900,7 +8900,7 @@ GameObject:
   - component: {fileID: 2094298321}
   - component: {fileID: 2094298320}
   m_Layer: 5
-  m_Name: GoldBonusLvlUpValueText
+  m_Name: GoldBonusCostValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
