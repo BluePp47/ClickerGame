@@ -1,6 +1,4 @@
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,9 +11,7 @@ public class GameManager : MonoBehaviour
     public AudioManager audioManager;//BGM 재생용
     private CurrencyManager currencyManager; //골드획득이나 소비용
     public Text goldText;
-    public GameObject optionPanel; //bgm이나 설정
     public event Action<List<TMP_Text>, UpgType> OnUpdateUI;
-
 
     private void Awake()
     {
@@ -31,16 +27,6 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void ToggleOptionPanel()
-    {
-        optionPanel.SetActive(!optionPanel.activeSelf);
-    }
-    public void CloseOptionPanel()
-    {
-        optionPanel.SetActive(false);
-    }
-
-
     public void GainGold(int amount)
     {
         currencyManager.AddGold(amount);
@@ -51,19 +37,4 @@ public class GameManager : MonoBehaviour
         currencyManager.SubtractGold(amount);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        UpdateUI();
-    }
-
-    public void UpdateUI()
-    {
-
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
