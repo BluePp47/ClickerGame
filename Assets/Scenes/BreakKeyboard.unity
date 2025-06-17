@@ -1178,7 +1178,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 762966331}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ToggleOptionPanel
         m_Mode: 1
@@ -3470,7 +3470,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 762966330}
-  - component: {fileID: 762966331}
   m_Layer: 5
   m_Name: UserUI
   m_TagString: Untagged
@@ -3503,26 +3502,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 760, y: 548.102}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &762966331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762966329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199ce88f716bef04f88c36912d9dee5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData:
-    gold: 10000
-    stage: 1
-    attack: 10
-    level: 1
-  audioManager: {fileID: 462284311}
-  goldText: {fileID: 1162092959}
-  optionPanel: {fileID: 1826894921}
 --- !u!1 &764957643
 GameObject:
   m_ObjectHideFlags: 0
@@ -5903,7 +5882,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 762966331}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: CloseOptionPanel
         m_Mode: 1

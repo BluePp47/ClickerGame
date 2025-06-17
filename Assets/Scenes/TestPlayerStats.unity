@@ -2198,7 +2198,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 679973440}
-  - component: {fileID: 679973439}
   m_Layer: 5
   m_Name: UserUI
   m_TagString: Untagged
@@ -2206,26 +2205,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &679973439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 679973438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199ce88f716bef04f88c36912d9dee5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData:
-    gold: 10000
-    stage: 1
-    attack: 10
-    level: 1
-  audioManager: {fileID: 0}
-  goldText: {fileID: 1224435299}
-  optionPanel: {fileID: 642521331}
 --- !u!224 &679973440
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2578,7 +2557,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 679973439}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: CloseOptionPanel
         m_Mode: 1
@@ -5651,7 +5630,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 679973439}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ToggleOptionPanel
         m_Mode: 1
@@ -5732,13 +5711,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   critLvlTitleTxt: {fileID: 1916995537}
   critValueTxt: {fileID: 254420525}
-  critLvlUpTxt: {fileID: 1168728009}
+  critCostTxt: {fileID: 1168728009}
   autoAtkLvlTitleTxt: {fileID: 211452722}
   autoAtkValueTxt: {fileID: 1144007267}
-  autoAtkLvlUpTxt: {fileID: 584374121}
+  autoAtkCostTxt: {fileID: 584374121}
   goldBonusLvlTitleTxt: {fileID: 827436194}
   goldBonusValueTxt: {fileID: 1963278806}
-  goldBonusLvlUpTxt: {fileID: 2094298320}
+  goldBonusCostTxt: {fileID: 2094298320}
   criticalBtn: {fileID: 821875071}
   autoAtkBtn: {fileID: 1088135924}
   goldBonusBtn: {fileID: 691713847}
