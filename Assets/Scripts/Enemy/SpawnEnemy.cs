@@ -66,6 +66,6 @@ public class SpawnEnemy : MonoBehaviour
 
         SpawnOneEnemyImmediately();
 
-        Destroy(enemyToDestroy); // 기존 적 오브젝트 제거
+        Destroy(enemyToDestroy.transform.root.gameObject); // 기존 적 오브젝트 제거
     }
 }
