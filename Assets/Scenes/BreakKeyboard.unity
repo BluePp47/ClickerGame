@@ -6153,7 +6153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -233, y: 86}
+  m_AnchoredPosition: {x: -320, y: 86}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1562767111
@@ -6176,7 +6176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00.00
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7230,6 +7230,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 39627038893920a47ac87b384ac96a07, type: 2}
   - {fileID: 11400000, guid: 0ce7c3015375849408aa198f7a2027d1, type: 2}
   - {fileID: 11400000, guid: 095564236c48f984a8d140ab015b0a0f, type: 2}
+  stageText: {fileID: 1844370179}
+  timerText: {fileID: 1562767111}
   currentStage: {fileID: 11400000, guid: 65f175660c494d64b845f8edbccd27e4, type: 2}
 --- !u!4 &1857756721
 Transform:
