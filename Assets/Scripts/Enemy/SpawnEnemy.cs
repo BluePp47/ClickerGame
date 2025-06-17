@@ -69,6 +69,14 @@ public class SpawnEnemy : MonoBehaviour
 
         SpawnOneEnemyImmediately();
 
-        Destroy(enemyToDestroy.transform.root.gameObject); // 기존 적 오브젝트 제거
+        // enemyToDestroy가 유효한지 확인 후 제거
+        if (enemyToDestroy != null)
+        {
+            var root = enemyToDestroy.transform.root;
+            if (root != null && root.gameObject != null)
+            {
+                Destroy(root.gameObject);
+            }
+        }
     }
 }
