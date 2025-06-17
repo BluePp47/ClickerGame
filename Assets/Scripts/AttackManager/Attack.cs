@@ -48,12 +48,9 @@ public class Attack : MonoBehaviour
         }
     }
 
-    public void FindEnemy()
+    public void SetEnemy(Enemy enemy)
     {
-        if (enemy == null)
-        {
-            enemy = enemy.GetComponent<Enemy>();
-        }
+        this.enemy = enemy;
     }
 
 
@@ -61,7 +58,7 @@ public class Attack : MonoBehaviour
     {
         enemy.TakeDamage(statCalculator.GetTotalDamage());
     }
-
+    //null 예외처리
     public void AutoAttack()
     {
         if (AutoAttackCoroutine != null)
