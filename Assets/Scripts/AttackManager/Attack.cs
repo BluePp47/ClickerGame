@@ -37,10 +37,10 @@ public class Attack : MonoBehaviour
 
     public void Touch()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            return; // UI 클릭이면 무시
-        }
+        //if (EventSystem.current.IsPointerOverGameObject())
+        //{
+        //    return; // UI 클릭이면 무시
+        //}
         //Input.GetMouseButtonDown(0)가 안에 있으면 의미가 없다.
         if (IsAttackTouch && Input.GetMouseButtonDown(0) && (LastAtkTouch > TouchAttackCoolDown))
         {
