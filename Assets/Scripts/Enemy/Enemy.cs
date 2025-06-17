@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour
     public void Init(EnemyData data, int stageNumber)
     {
         enemyData = data;
-        currentHealth = enemyData.GetHealthForStage(stageNumber);
-        currentHealth = maxHealth;
+        maxHealth = enemyData.GetHealthForStage(stageNumber); // maxHealth 세팅
+        currentHealth = maxHealth; // 현재 체력은 최대 체력으로 초기화
         UpdateHPUI(); // 체력 슬라이더 갱신
     }
 
