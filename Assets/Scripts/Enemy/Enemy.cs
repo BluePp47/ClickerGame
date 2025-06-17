@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     // 데미지를 받을 때 호출
     public void TakeDamage(int amount)
     {
+        Debug.Log($"현재체력 {currentHealth}  {amount}");
         currentHealth -= amount;
 
         // currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
