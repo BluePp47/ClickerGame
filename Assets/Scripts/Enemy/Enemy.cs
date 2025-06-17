@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    public GameManager GameManager; // 게임 매니저 참조
     public EnemyData enemyData;     // 이 적이 어떤 종류인지에 대한 데이터
     public int currentHealth;       // 현재 체력
     [SerializeField] private int maxHealth;
@@ -63,11 +64,9 @@ public class Enemy : MonoBehaviour
             stageManager.OnEnemyKilled();
             int gold = enemyData.GetGoldForStage(stageManager.currentStage.stageNumber);
 
+           GameManager.Instance.GainGold(gold); 
             
-            if (GameManager.Instance != null)
-            {
-                GameManager.Instance.GainGold(gold);
-            }
+
         }
 
         // 적 비활성화
