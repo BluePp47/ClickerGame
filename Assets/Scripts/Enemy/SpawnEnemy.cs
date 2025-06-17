@@ -43,7 +43,7 @@ public class SpawnEnemy : MonoBehaviour
         {
             return; //방코
         }
-        Debug.Log("n");
+        
         // 선택한 프리팹을 해당 위치에 생성
         GameObject enemyGO = Instantiate(selectedEnemyData.prefab, spawnPoint.position, Quaternion.identity);
 
@@ -54,7 +54,7 @@ public class SpawnEnemy : MonoBehaviour
             int stageNumber = stageManager.currentStage.stageNumber;
             enemyScript.Init(selectedEnemyData, stageNumber);
             attack.SetEnemy(enemyScript);
-            Debug.Log("s");
+            
         }
         else
         {
