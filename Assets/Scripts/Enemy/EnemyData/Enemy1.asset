@@ -16,4 +16,4 @@ MonoBehaviour:
   enemyHealth: 100
   enemySprite: {fileID: 0}
   gold: 0
-  prefab: {fileID: 0}
+  prefab: {fileID: 5500164096313970808, guid: c8562a440f2acc84b8cffafebb1e6b97, type: 3}
