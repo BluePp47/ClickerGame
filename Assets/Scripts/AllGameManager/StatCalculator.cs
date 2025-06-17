@@ -2,16 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class StatCalculator
+public class StatCalculator : MonoBehaviour
 {
+    public PlayerData playerData;
+    public WeaponData weaponData;
 
-    public static int CalculateAttack(PlayerData data)
+    public float criticalChance = 0.5f;
+    public int criticalMultiplier = 2;
+
+    public int GetTotalDamage()
     {
-        return data.level * 2 + data.attack;
+        int baseDamage = playerData.attack + weaponData.baseDamage;
+        if (IsCriticalAtk(criticalChance))
+        {
+            return baseDamage * criticalMultiplier;
+        }
+        return baseDamage;
     }
 
-    public static int CalculateNextLevelCost(PlayerData data)
+    public bool IsCriticalAtk(float criticPer)
     {
-        return data.level * 100;
+        float number = Random.value;
+        return number < criticPer;
     }
 }

@@ -1,54 +1,75 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
-// 개별 적에 붙는 스크립트
 public class Enemy : MonoBehaviour
 {
-    public EnemyData enemyData; // 적의 데이터 (스탯 등)
+    public EnemyData enemyData;     // 이 적이 어떤 종류인지에 대한 데이터
+    public int currentHealth;       // 현재 체력
+    [SerializeField]private int maxHealth;
 
-    private int currentHealth;
+    public Slider hpSlider;
 
-    void Start()
+    // 외부에서 초기화할 수 있도록 Init 메서드 제공
+    public void Init(EnemyData data, int stageNumber)
     {
-        // 현재 스테이지 정보에 따라 체력 결정
-        StageManager stageManager = FindObjectOfType<StageManager>();
-        int currentStageNumber = stageManager != null ? stageManager.currentStage.stageNumber : 1;
-
-        currentHealth = enemyData.GetHealthForStage(currentStageNumber);
+        enemyData = data;
+        currentHealth = enemyData.GetHealthForStage(stageNumber);
+        currentHealth = maxHealth;
+        UpdateHPUI(); // 체력 슬라이더 갱신
     }
 
-    // 데미지를 받는 함수
-    public void TakeDamage(int amount)
+    void Update()
     {
-        currentHealth -= amount;
-        if (currentHealth <= 0)
+        // 테스트용: Q 키를 누르면 체력을 모두 잃고 사망 처리
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            Die(); // 체력 0 이하이면 사망 처리
+            TakeDamage(currentHealth);
         }
     }
 
-    // 적이 죽었을 때
+    // 데미지를 받을 때 호출
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+
+       // currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        // 체력 UI 업데이트
+        UpdateHPUI();
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    // 체력 UI 업데이트
+    void UpdateHPUI()
+    {
+        if (hpSlider != null)
+        {
+            hpSlider.value = (float)currentHealth / maxHealth;
+        }
+    }
+
+    // 사망 처리
     void Die()
     {
-        // StageManager에 적 처치 알림
+        // 적 처치 알림
         StageManager stageManager = FindObjectOfType<StageManager>();
         if (stageManager != null)
         {
             stageManager.OnEnemyKilled();
         }
 
-        // 적이 죽자마자 새 적을 소환
+        // 적 비활성화
+        gameObject.SetActive(false);
+
+        // 1초 뒤에 새로운 적 생성 요청
         SpawnEnemy spawner = FindObjectOfType<SpawnEnemy>();
         if (spawner != null)
         {
-            spawner.SpawnOneEnemyImmediately();
+            spawner.StartCoroutine(spawner.SpawnAfterDelay(1f, gameObject));
         }
-
-        Destroy(gameObject); // 본인 제거
-    }
-
-    // 마우스로 클릭 시 데미지 (클릭커 게임용)
-    void OnMouseDown()
-    {
-        TakeDamage(1); // 클릭 시 데미지 1
     }
 }

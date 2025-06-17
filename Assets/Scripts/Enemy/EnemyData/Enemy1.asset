@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca0b08fac591084688c0f46198d6a5c, type: 3}
+  m_Name: Enemy1
+  m_EditorClassIdentifier: 
+  enemyName: A
+  enemyHealth: 100
+  enemySprite: {fileID: 0}
+  gold: 0
+  prefab: {fileID: 5500164096313970808, guid: c8562a440f2acc84b8cffafebb1e6b97, type: 3}

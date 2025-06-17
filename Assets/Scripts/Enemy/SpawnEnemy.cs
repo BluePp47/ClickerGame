@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-// 적을 수동으로 생성하는 스크립트 (적이 죽을 때마다 호출됨)
 public class SpawnEnemy : MonoBehaviour
 {
     public StageManager stageManager;    // 스테이지 정보를 가져오기 위한 참조
-    public GameObject enemyPrefab;       // 생성할 적 프리팹 (Enemy 스크립트 포함)
     public Transform spawnPoint;         // 적이 생성될 위치
 
     void Start()
@@ -16,34 +15,57 @@ public class SpawnEnemy : MonoBehaviour
             stageManager = FindObjectOfType<StageManager>();
         }
 
-        // 시작 시 첫 적 1마리만 생성
+        // 시작 시 첫 적 1마리 생성
         SpawnOneEnemyImmediately();
     }
 
-    // 적 하나를 즉시 생성하는 메서드 (적이 죽을 때마다 호출됨)
+    // 적 하나를 즉시 생성하는 메서드 (적이 죽을 때 호출됨)
     public void SpawnOneEnemyImmediately()
     {
+        // 스테이지 정보가 없으면 생성하지 않음
         if (stageManager.currentStage == null) return;
 
+        // 생성 가능한 적 리스트 가져오기
         List<EnemyData> spawnable = stageManager.currentStage.spawnableEnemies;
 
+        // 리스트가 비었으면 경고 출력 후 종료
         if (spawnable == null || spawnable.Count == 0)
         {
-            Debug.LogWarning("스폰 가능한 적이 없습니다!");
-            return;
+            return; //방코
         }
 
-        // 현재 스테이지에서 랜덤한 적 데이터 선택
+        // 랜덤한 EnemyData 선택
         EnemyData selectedEnemyData = spawnable[Random.Range(0, spawnable.Count)];
 
-        // 적 프리팹 생성
-        GameObject enemyGO = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+        // EnemyData에 연결된 프리팹이 없으면 방코
+        if (selectedEnemyData.prefab == null)
+        {
+            return; //방코
+        }
 
-        // Enemy 스크립트에 적 데이터 연결
+        // 선택한 프리팹을 해당 위치에 생성
+        GameObject enemyGO = Instantiate(selectedEnemyData.prefab, spawnPoint.position, Quaternion.identity);
+
+        // Enemy 스크립트에 데이터 전달 및 초기화
         Enemy enemyScript = enemyGO.GetComponent<Enemy>();
         if (enemyScript != null)
         {
-            enemyScript.enemyData = selectedEnemyData;
+            int stageNumber = stageManager.currentStage.stageNumber;
+            enemyScript.Init(selectedEnemyData, stageNumber);
         }
+        else
+        {
+            return; // 방코 
+        }
+    }
+
+    // 일정 시간 후 적을 생성하고 기존 오브젝트 제거
+    public IEnumerator SpawnAfterDelay(float delay, GameObject enemyToDestroy)
+    {
+        yield return new WaitForSeconds(delay);
+
+        SpawnOneEnemyImmediately();
+
+        Destroy(enemyToDestroy.transform.root.gameObject); // 기존 적 오브젝트 제거
     }
 }
