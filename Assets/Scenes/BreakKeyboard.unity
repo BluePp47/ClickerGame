@@ -3654,6 +3654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageManager: {fileID: 1857756720}
   spawnPoint: {fileID: 779595840}
+  attack: {fileID: 1588651144}
 --- !u!4 &779595840
 Transform:
   m_ObjectHideFlags: 0
