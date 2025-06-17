@@ -21,7 +21,6 @@ public class PlayerUpgradeUI : MonoBehaviour
     [SerializeField] private Button autoAtkBtn;
     [SerializeField] private Button goldBonusBtn;
     [Header("Others")]
-    [SerializeField] private TMP_Text currentGoldTxt;
     [SerializeField] private PlayerUpgradeHandler playerUpgHandler;
     [SerializeField] private PlayerStatsSO statsSO;
     private void Awake()
@@ -50,15 +49,22 @@ public class PlayerUpgradeUI : MonoBehaviour
 
         txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);                 // Lvl Txt
         txt[1].text = playerUpgHandler.GetValueText(txt[0].text, type);              // Value Txt
-        txt[2].text = playerUpgHandler.GetCostText(txt[0].text);                  // Cost Txt
+        txt[2].text = playerUpgHandler.GetCostText(txt[0].text);                     // Cost Txt
         txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[0].text, currentGold); // CurrentGold Txt
     }
-    public void RefreshAllUpgrade()
-    {
-        UpdateUI(criticalLIst, UpgType.Critical);
-        UpdateUI(autoAtkLIst, UpgType.AutoAttack);
-        UpdateUI(goldBonusLIst, UpgType.GoldBonus);
-    }
+    //public void RefreshAllUpgrade(List<TMP_Text> txt, UpgType type)
+    //{
+    //    int currentGold = playerUpgHandler.CurrentGold;
+    //    int cost = playerUpgHandler.GetCost(type);
+    //    bool canUpgrade = currentGold >= cost;
+
+    //    Button btn = GetButtonByType(type);
+    //    btn.interactable = currentGold >= cost;
+
+    //    txt[2].text = cost.ToString("N0");
+    //    txt[3].text = currentGold.ToString("N0");
+    //    txt[2].color = canUpgrade ? Color.white : Color.red;
+    //}
     #region cost
     public void TryUpgrade(List<TMP_Text> txt, UpgType type)
     {
@@ -69,7 +75,7 @@ public class PlayerUpgradeUI : MonoBehaviour
         Button btn = GetButtonByType(type);
         btn.interactable = canUpgrade;
 
-        txt[2].color = canUpgrade ? Color.white : Color.red;
+        txt[2].color = canUpgrade ? Color.gray : Color.red;
     }
     private Button GetButtonByType(UpgType type)
     {

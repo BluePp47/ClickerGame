@@ -4,6 +4,8 @@ public class PlayerUpgradeHandler
 {
     private PlayerStatsSO data;
 
+    private int currentGold;
+    public int CurrentGold => currentGold;
     public string GetLvlTitleText(string level)
     {
         int lvl = int.Parse(level);
@@ -42,6 +44,20 @@ public class PlayerUpgradeHandler
         int value = Gold - cost;
         return value.ToString();
     } 
+    //public int GetCost(UpgType type)
+    //{
+    //    int level = GetLevel(type);
+    //    int value = data.GetCostValue((level + 1).ToString());
+    //    return value;
+    //}
+    //public int GetLevel(UpgType type)
+    //{
+    //    switch (type)
+    //    {
+    //        case UpgType.Critical:
+    //            return critLevel;
+    //    }
+    //}
     public PlayerUpgradeHandler(PlayerStatsSO statsdata)
     {
         data = statsdata;
