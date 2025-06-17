@@ -4660,7 +4660,7 @@ MonoBehaviour:
     attack: 10
     level: 1
   audioManager: {fileID: 462284311}
-  goldText: {fileID: 1162092959}
+  goldText: {fileID: 384773006}
 --- !u!4 &1062469084
 Transform:
   m_ObjectHideFlags: 0
@@ -9028,6 +9028,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 779595840}
   - {fileID: 673066948}
   - {fileID: 1853388893}
   - {fileID: 1773598022}
@@ -9035,6 +9036,5 @@ SceneRoots:
   - {fileID: 462284312}
   - {fileID: 1461618560}
   - {fileID: 2046663001}
-  - {fileID: 779595840}
   - {fileID: 1857756721}
   - {fileID: 1024564538}

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public PlayerData playerData; //플레이어 데이터 클래스 필요
     public AudioManager audioManager;//BGM 재생용
     private CurrencyManager currencyManager; //골드획득이나 소비용
-    public Text goldText;
+    public TextMeshProUGUI goldText;
     public event Action<List<TMP_Text>, UpgType> OnUpdateUI;
     private void Awake()
     {
