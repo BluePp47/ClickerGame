@@ -5,8 +5,18 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     public List<WeaponData> allWeapons;
+    public WeaponData defaultWeapon;
     public List<WeaponData> ownedWeapons = new();
     public Dictionary<WeaponData, int> weaponLevels = new();
+
+    void Awake()
+    {
+        if (defaultWeapon != null && !ownedWeapons.Contains(defaultWeapon))
+        {
+            ownedWeapons.Add(defaultWeapon);
+            weaponLevels[defaultWeapon] = 1;
+        }
+    }
 
     public bool TryBuyWeapon(WeaponData weapon, int playerGold, out int cost)
     {
@@ -18,7 +28,7 @@ public class WeaponManager : MonoBehaviour
             return false;
 
         ownedWeapons.Add(weapon);
-        weaponLevels[weapon] = 0;
+        weaponLevels[weapon] = 1;
         return true;
     }
 
