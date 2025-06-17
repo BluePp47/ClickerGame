@@ -2684,7 +2684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contentParent: {fileID: 846299897}
-  weaponSlotPrefab: {fileID: 9053839317755105416, guid: e8eb5891a76739a44b307d450f6d1b53, type: 3}
+  weaponSlotPrefab: {fileID: 7984522754823534318, guid: e8eb5891a76739a44b307d450f6d1b53, type: 3}
   weaponManager: {fileID: 1773598021}
   mainWeaponUI: {fileID: 2005584916}
   uiManager: {fileID: 1461618559}
@@ -6677,17 +6677,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allWeapons:
-  - {fileID: 11400000, guid: f06d57bef421ab64889f3ddf5778dab3, type: 2}
+  - {fileID: 11400000, guid: 0e0c1eee1942d7145aac14d13f466b94, type: 2}
+  - {fileID: 11400000, guid: 70a64795a25c19d4dbf37dc979c5185c, type: 2}
+  - {fileID: 11400000, guid: 2ec5750fae2612a4eae563f17048fee0, type: 2}
+  - {fileID: 11400000, guid: a8ff91fce578b2e429b7df381a0fad4d, type: 2}
+  - {fileID: 11400000, guid: 14127fcf837d8b84f8c03cd99e4a5c17, type: 2}
+  - {fileID: 11400000, guid: 78fcc892546c1dd419eb9b1521ce7fa6, type: 2}
   - {fileID: 11400000, guid: 62586ff866b4d12409607f6f28541328, type: 2}
-  - {fileID: 11400000, guid: f8d7a9734d3809f43bef436032d239a1, type: 2}
-  - {fileID: 11400000, guid: cee6334bc2d039a4fa0828510d1b847e, type: 2}
-  - {fileID: 11400000, guid: 154fd0f19eef9a94d88f67a5dfb25b56, type: 2}
-  - {fileID: 11400000, guid: 11145cd9c6a49db4d9128b7adcc3e009, type: 2}
-  - {fileID: 11400000, guid: ff6ac82951ba97a4ba29fe010bd827d6, type: 2}
-  - {fileID: 11400000, guid: e13ec264e5b6ff249a34fea9af6797ac, type: 2}
-  - {fileID: 11400000, guid: e13ec264e5b6ff249a34fea9af6797ac, type: 2}
-  ownedWeapons:
-  - {fileID: 11400000, guid: f06d57bef421ab64889f3ddf5778dab3, type: 2}
+  - {fileID: 11400000, guid: 49e5bc033cfe4a648b656495bd094f4c, type: 2}
+  defaultWeapon: {fileID: 11400000, guid: 0e0c1eee1942d7145aac14d13f466b94, type: 2}
+  ownedWeapons: []
 --- !u!4 &1773598022
 Transform:
   m_ObjectHideFlags: 0

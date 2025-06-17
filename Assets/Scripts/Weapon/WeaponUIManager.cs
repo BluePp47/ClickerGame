@@ -16,7 +16,7 @@ public class WeaponUIManager : MonoBehaviour
     public WeaponMainUI weaponMainUIComponent;
     public WeaponShopUI weaponShopUI;
 
-    private int gold = 500;
+    private int gold = 5000;
 
     void Start()
     {

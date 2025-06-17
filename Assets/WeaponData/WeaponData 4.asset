@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dd623ccd21c2a34fb6d8509701de2e6, type: 3}
-  m_Name: Cursor1 3
+  m_Name: WeaponData 4
   m_EditorClassIdentifier: 
-  weaponName: "\uAE30\uBCF8\uCEE4\uC11C"
-  icon: {fileID: 21300000, guid: 3108e9961a4944e42b944d6be1fa8ccc, type: 3}
-  bonusDamage: 0
-  price: 0
+  weaponName: "\uC8FC\uD669 \uC8FC\uBA39"
+  icon: {fileID: 21300000, guid: 6a86fc39dcf36024893930704fe57978, type: 3}
+  baseDamage: 8
+  damageIncreasePerLevel: 8
+  basePrice: 0
