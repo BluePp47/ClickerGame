@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     private CurrencyManager currencyManager; //골드획득이나 소비용
     public Text goldText;
     public event Action<List<TMP_Text>, UpgType> OnUpdateUI;
-
     private void Awake()
     {
         if (Instance == null)
@@ -26,7 +25,10 @@ public class GameManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-
+    public void OnClickUpgrade(List<TMP_Text> list, UpgType type)
+    {
+        OnUpdateUI?.Invoke(list, type);
+    }
     public void GainGold(int amount)
     {
         currencyManager.AddGold(amount);

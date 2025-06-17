@@ -31,16 +31,18 @@ public class PlayerUpgradeUI : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.OnUpdateUI += UpdateUI;
+        GameManager.Instance.OnUpdateUI += TryUpgrade;
     }
     private void Start()
     {
-        criticalBtn.onClick.AddListener(() => UpdateUI(criticalLIst, UpgType.Critical));
-        autoAtkBtn.onClick.AddListener(() => UpdateUI(autoAtkLIst, UpgType.AutoAttack));
-        goldBonusBtn.onClick.AddListener(() => UpdateUI(goldBonusLIst, UpgType.GoldBonus));
+        criticalBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(criticalLIst, UpgType.Critical));
+        autoAtkBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(autoAtkLIst, UpgType.AutoAttack));
+        goldBonusBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(goldBonusLIst, UpgType.GoldBonus));
     }
     private void OnDisable()
     {
         GameManager.Instance.OnUpdateUI -= UpdateUI;
+        GameManager.Instance.OnUpdateUI -= TryUpgrade;
     }
     public void UpdateUI(List<TMP_Text> txt, UpgType type)
     {
@@ -48,9 +50,16 @@ public class PlayerUpgradeUI : MonoBehaviour
 
         txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);                 // Lvl Txt
         txt[1].text = playerUpgHandler.GetValueText(txt[0].text, type);              // Value Txt
-        txt[2].text = playerUpgHandler.GetLvlCostText(txt[0].text);                  // Cost Txt
+        txt[2].text = playerUpgHandler.GetCostText(txt[0].text);                  // Cost Txt
         txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[0].text, currentGold); // CurrentGold Txt
     }
+    public void RefreshAllUpgrade()
+    {
+        UpdateUI(criticalLIst, UpgType.Critical);
+        UpdateUI(autoAtkLIst, UpgType.AutoAttack);
+        UpdateUI(goldBonusLIst, UpgType.GoldBonus);
+    }
+    #region cost
     public void TryUpgrade(List<TMP_Text> txt, UpgType type)
     {
         int currentGold = int.Parse(txt[3].text);
@@ -76,4 +85,5 @@ public class PlayerUpgradeUI : MonoBehaviour
                 return null;
         }
     }
+    #endregion
 }

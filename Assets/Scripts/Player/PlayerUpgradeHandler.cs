@@ -28,7 +28,7 @@ public class PlayerUpgradeHandler
         }
         return value.ToString("N1");
     }
-    public string GetLvlCostText(string level)
+    public string GetCostText(string level)
     {
         int cost = data.GetCostValue(level);
         return cost.ToString();

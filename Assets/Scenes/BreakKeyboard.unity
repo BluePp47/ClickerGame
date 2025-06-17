@@ -1976,7 +1976,7 @@ GameObject:
   - component: {fileID: 384773007}
   - component: {fileID: 384773006}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: GoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8508,32 +8508,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ba5c3411f5beb43861f3c2819ebf40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  critLvlTitleTxt: {fileID: 102135699}
-  critValueTxt: {fileID: 747832920}
-  critCostTxt: {fileID: 986576135}
-  autoAtkLvlTitleTxt: {fileID: 1918477899}
-  autoAtkValueTxt: {fileID: 1912919717}
-  autoAtkCostTxt: {fileID: 376134492}
-  goldBonusLvlTitleTxt: {fileID: 1203780852}
-  goldBonusValueTxt: {fileID: 677372455}
-  goldBonusCostTxt: {fileID: 1857679615}
+  criticalLIst:
+  - {fileID: 102135699}
+  - {fileID: 747832920}
+  - {fileID: 986576135}
+  - {fileID: 384773006}
+  autoAtkLIst:
+  - {fileID: 1918477899}
+  - {fileID: 1912919717}
+  - {fileID: 376134492}
+  - {fileID: 384773006}
+  goldBonusLIst:
+  - {fileID: 1203780852}
+  - {fileID: 677372455}
+  - {fileID: 1857679615}
+  - {fileID: 384773006}
   criticalBtn: {fileID: 1094117476}
   autoAtkBtn: {fileID: 257927370}
   goldBonusBtn: {fileID: 155239914}
   currentGoldTxt: {fileID: 384773006}
   statsSO: {fileID: 11400000, guid: 30bc442be1e312b40b058fa84d69cb39, type: 2}
-  criticalLIst:
-  - {fileID: 102135699}
-  - {fileID: 747832920}
-  - {fileID: 986576135}
-  autoAtkLIst:
-  - {fileID: 1918477899}
-  - {fileID: 1912919717}
-  - {fileID: 376134492}
-  goldBonusLIst:
-  - {fileID: 1203780852}
-  - {fileID: 677372455}
-  - {fileID: 1857679615}
 --- !u!4 &2046663001
 Transform:
   m_ObjectHideFlags: 0
