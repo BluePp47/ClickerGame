@@ -33,6 +33,7 @@ public class Attack : MonoBehaviour
         LastAtkTouch += Time.deltaTime;
         Touch();
     }
+   
 
     public void Touch()
     {
@@ -46,6 +47,16 @@ public class Attack : MonoBehaviour
             TotalAtk();
         }
     }
+
+    public void FindEnemy()
+    {
+        if (enemy == null)
+        {
+            enemy = enemy.GetComponent<Enemy>();
+        }
+    }
+
+
     public void TotalAtk()
     {
         enemy.TakeDamage(statCalculator.GetTotalDamage());

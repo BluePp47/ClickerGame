@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public EnemyData enemyData;     // 이 적이 어떤 종류인지에 대한 데이터
     public int currentHealth;       // 현재 체력
-    private int maxHealth;
+    [SerializeField]private int maxHealth;
 
     public Slider hpSlider;
 
@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= amount;
 
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+       // currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         // 체력 UI 업데이트
         UpdateHPUI();
 
