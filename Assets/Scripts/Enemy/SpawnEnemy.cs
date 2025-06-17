@@ -7,6 +7,7 @@ public class SpawnEnemy : MonoBehaviour
     public StageManager stageManager;    // 스테이지 정보를 가져오기 위한 참조
     public Transform spawnPoint;         // 적이 생성될 위치
 
+    public Attack attack;
     void Start()
     {
         // stageManager가 연결 안 됐으면 자동으로 씬에서 찾음
@@ -42,16 +43,18 @@ public class SpawnEnemy : MonoBehaviour
         {
             return; //방코
         }
-
+        Debug.Log("n");
         // 선택한 프리팹을 해당 위치에 생성
         GameObject enemyGO = Instantiate(selectedEnemyData.prefab, spawnPoint.position, Quaternion.identity);
 
         // Enemy 스크립트에 데이터 전달 및 초기화
-        Enemy enemyScript = enemyGO.GetComponent<Enemy>();
+        Enemy enemyScript = enemyGO.GetComponentInChildren<Enemy>();
         if (enemyScript != null)
         {
             int stageNumber = stageManager.currentStage.stageNumber;
             enemyScript.Init(selectedEnemyData, stageNumber);
+            attack.SetEnemy(enemyScript);
+            Debug.Log("s");
         }
         else
         {

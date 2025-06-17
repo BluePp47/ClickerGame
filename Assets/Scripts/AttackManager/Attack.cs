@@ -56,7 +56,8 @@ public class Attack : MonoBehaviour
 
     public void TotalAtk()
     {
-        enemy.TakeDamage(statCalculator.GetTotalDamage());
+        if (enemy != null)
+            enemy.TakeDamage(statCalculator.GetTotalDamage());
     }
     //null 예외처리
     public void AutoAttack()
