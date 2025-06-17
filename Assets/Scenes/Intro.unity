@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 673066946}
   - component: {fileID: 673066945}
   - component: {fileID: 673066949}
+  - component: {fileID: 673066950}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -311,8 +312,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2331867833835502683}
   - {fileID: 7530143299547403898}
+  - {fileID: 2331867833835502683}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -340,6 +341,22 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   goldText: {fileID: 0}
   optionPanel: {fileID: 6419490343021165593}
+--- !u!114 &673066950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673066944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b55b35980d3924d911a676a8a7ea4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleMusic: {fileID: 0}
+  bgMusic: {fileID: 0}
+  mixer: {fileID: 0}
+  bgmSlider: {fileID: 0}
 --- !u!1 &682919348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,7 +1713,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 673066950}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SetBGMVolume
         m_Mode: 0
@@ -1708,7 +1725,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 673066950}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SetBGMVolume
         m_Mode: 4
