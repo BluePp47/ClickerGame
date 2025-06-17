@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public EnemyData enemyData;     // 이 적이 어떤 종류인지에 대한 데이터
     public int currentHealth;       // 현재 체력
-    [SerializeField]private int maxHealth;
+    [SerializeField] private int maxHealth;
 
     public Slider hpSlider;
 
@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour
     public void Init(EnemyData data, int stageNumber)
     {
         enemyData = data;
-        currentHealth = enemyData.GetHealthForStage(stageNumber);
-        currentHealth = maxHealth;
+        maxHealth = enemyData.GetHealthForStage(stageNumber); // maxHealth 세팅
+        currentHealth = maxHealth; // 현재 체력은 최대 체력으로 초기화
         UpdateHPUI(); // 체력 슬라이더 갱신
     }
 
@@ -31,9 +31,10 @@ public class Enemy : MonoBehaviour
     // 데미지를 받을 때 호출
     public void TakeDamage(int amount)
     {
+        Debug.Log($"현재체력 {currentHealth}  {amount}");
         currentHealth -= amount;
 
-       // currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        // currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         // 체력 UI 업데이트
         UpdateHPUI();
 
@@ -60,6 +61,13 @@ public class Enemy : MonoBehaviour
         if (stageManager != null)
         {
             stageManager.OnEnemyKilled();
+            int gold = enemyData.GetGoldForStage(stageManager.currentStage.stageNumber);
+
+            
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.GainGold(gold);
+            }
         }
 
         // 적 비활성화
