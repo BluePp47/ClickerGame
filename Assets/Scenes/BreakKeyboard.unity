@@ -4692,7 +4692,7 @@ MonoBehaviour:
     equippedWeapon: 
     autoAttackLevel: 0
     criticalLevel: 0
-  weaponData: {fileID: 11400000, guid: 62586ff866b4d12409607f6f28541328, type: 2}
+  weaponManager: {fileID: 1773598021}
   criticalChance: 0.5
   criticalMultiplier: 2
 --- !u!4 &1024564538
