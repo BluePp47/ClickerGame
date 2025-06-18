@@ -16,7 +16,7 @@ public class WeaponUIManager : MonoBehaviour
     public WeaponMainUI weaponMainUIComponent;
     public WeaponShopUI weaponShopUI;
 
-    private int gold = 5000;
+    public CurrencyManager currencyManager;
 
     void Start()
     {
@@ -26,34 +26,31 @@ public class WeaponUIManager : MonoBehaviour
         RefreshUI();
     }
 
-    public int GetGold() => gold;
+    public int GetGold()
+    {
+        return currencyManager.playerData.gold;
+    }
 
     public bool TryBuyWeapon(WeaponData weapon)
     {
-        if (weaponManager.TryBuyWeapon(weapon, gold, out int cost))
+        int cost;
+        if (weaponManager.TryBuyWeapon(weapon, GetGold(), out cost))
         {
-            gold -= cost;
-            return true;
+            if (currencyManager.SubtractGold(cost))
+                return true;
         }
-        else
-        {
-            Debug.Log("골드가 부족하거나 이미 소유중입니다.");
-            return false;
-        }
+        return false;
     }
 
     public bool TryUpgradeWeapon(WeaponData weapon)
     {
-        if (weaponManager.TryUpgradeWeapon(weapon, gold, out int cost))
+        int cost;
+        if (weaponManager.TryUpgradeWeapon(weapon, GetGold(), out cost))
         {
-            gold -= cost;
-            return true;
+            if (currencyManager.SubtractGold(cost))
+                return true;
         }
-        else
-        {
-            Debug.Log("골드가 부족하거나 업그레이드 할 수 없습니다.");
-            return false;
-        }
+        return false;
     }
 
     void OpenShop()

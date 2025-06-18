@@ -5984,6 +5984,7 @@ MonoBehaviour:
   weaponManager: {fileID: 1773598021}
   weaponMainUIComponent: {fileID: 2005584916}
   weaponShopUI: {fileID: 579676003}
+  currencyManager: {fileID: 1610683681}
 --- !u!4 &1461618560
 Transform:
   m_ObjectHideFlags: 0
