@@ -25,6 +25,16 @@ public class GameManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
+    public void SaveGame()
+    {
+        playerData.Save();
+    }
+    void Start()
+    {
+        playerData.Load();
+    }
+
+
     public void OnClickUpgrade(List<TMP_Text> list, UpgType type)
     {
         OnUpdateUI?.Invoke(list, type);
