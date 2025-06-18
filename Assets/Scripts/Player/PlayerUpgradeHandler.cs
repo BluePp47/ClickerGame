@@ -33,15 +33,19 @@ public class PlayerUpgradeHandler
         int cost = data.GetCostValue(level);
         return cost.ToString();
     }
-    public string GetCurrentGoldText(string level, int Gold)
+    public int GetCurrentGoldText(string level, int gold)
     {
         int costGrowthPerLvl = 10;
 
         int lvl = int.Parse(level);
         int cost = lvl * costGrowthPerLvl;
-        int value = Gold - cost;
-        return value.ToString();
-    } 
+        if (gold <= cost)
+        {
+            return gold;
+        }
+        int value = gold - cost;
+        return value;
+    }
     public PlayerUpgradeHandler(PlayerStatsSO statsdata)
     {
         data = statsdata;

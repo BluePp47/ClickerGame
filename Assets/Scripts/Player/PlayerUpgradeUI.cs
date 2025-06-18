@@ -9,6 +9,13 @@ public enum UpgType
     AutoAttack,
     GoldBonus
 }
+public enum UpgText
+{
+    Level = 0,
+    StatValue,
+    Cost,
+    Gold
+}
 
 public class PlayerUpgradeUI : MonoBehaviour
 {
@@ -21,9 +28,10 @@ public class PlayerUpgradeUI : MonoBehaviour
     [SerializeField] private Button autoAtkBtn;
     [SerializeField] private Button goldBonusBtn;
     [Header("Others")]
-    [SerializeField] private TMP_Text currentGoldTxt;
     [SerializeField] private PlayerUpgradeHandler playerUpgHandler;
     [SerializeField] private PlayerStatsSO statsSO;
+    [SerializeField] private CurrencyManager currencyManager;
+    
     private void Awake()
     {
         playerUpgHandler = new PlayerUpgradeHandler(statsSO);
@@ -32,9 +40,14 @@ public class PlayerUpgradeUI : MonoBehaviour
     {
         GameManager.Instance.OnUpdateUI += UpdateUI;
         GameManager.Instance.OnUpdateUI += TryUpgrade;
+        currencyManager.OnGoldChanged += GoldChanged;
     }
     private void Start()
     {
+        TryUpgrade(criticalLIst, UpgType.Critical);
+        TryUpgrade(autoAtkLIst, UpgType.AutoAttack);
+        TryUpgrade(goldBonusLIst, UpgType.GoldBonus);
+
         criticalBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(criticalLIst, UpgType.Critical));
         autoAtkBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(autoAtkLIst, UpgType.AutoAttack));
         goldBonusBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(goldBonusLIst, UpgType.GoldBonus));
@@ -43,33 +56,31 @@ public class PlayerUpgradeUI : MonoBehaviour
     {
         GameManager.Instance.OnUpdateUI -= UpdateUI;
         GameManager.Instance.OnUpdateUI -= TryUpgrade;
+        currencyManager.OnGoldChanged -= GoldChanged;
     }
     public void UpdateUI(List<TMP_Text> txt, UpgType type)
     {
-        int currentGold = int.Parse(txt[3].text);
-
-        txt[0].text = playerUpgHandler.GetLvlTitleText(txt[0].text);                 // Lvl Txt
-        txt[1].text = playerUpgHandler.GetValueText(txt[0].text, type);              // Value Txt
-        txt[2].text = playerUpgHandler.GetCostText(txt[0].text);                  // Cost Txt
-        txt[3].text = playerUpgHandler.GetCurrentGoldText(txt[0].text, currentGold); // CurrentGold Txt
+        int currentGold = GameManager.Instance.playerData.gold;
+        txt[(int)UpgText.Level].text = playerUpgHandler.GetLvlTitleText(txt[(int)UpgText.Level].text);                    // Lvl Txt
+        txt[(int)UpgText.StatValue].text = playerUpgHandler.GetValueText(txt[(int)UpgText.Level].text, type);             // Value Txt
+        txt[(int)UpgText.Cost].text = playerUpgHandler.GetCostText(txt[(int)UpgText.Level].text);                         // Cost Txt
+        GameManager.Instance.playerData.gold = playerUpgHandler.GetCurrentGoldText(txt[(int)UpgText.Level].text, currentGold);                            // CurrentGold Txt
     }
-    public void RefreshAllUpgrade()
+    void GoldChanged(int currentGold)
     {
-        UpdateUI(criticalLIst, UpgType.Critical);
-        UpdateUI(autoAtkLIst, UpgType.AutoAttack);
-        UpdateUI(goldBonusLIst, UpgType.GoldBonus);
+        TryUpgrade(criticalLIst, UpgType.Critical);
+        TryUpgrade(autoAtkLIst, UpgType.AutoAttack);
+        TryUpgrade(goldBonusLIst, UpgType.GoldBonus);
     }
     #region cost
     public void TryUpgrade(List<TMP_Text> txt, UpgType type)
     {
-        int currentGold = int.Parse(txt[3].text);
-        int cost = int.Parse(txt[2].text);
+        int currentGold = GameManager.Instance.playerData.gold;
+        int cost = int.Parse(txt[(int)UpgText.Cost].text);
         bool canUpgrade = currentGold >= cost;
-
         Button btn = GetButtonByType(type);
         btn.interactable = canUpgrade;
-
-        txt[2].color = canUpgrade ? Color.white : Color.red;
+        txt[(int)UpgText.Cost].color = canUpgrade ? Color.white : Color.red;
     }
     private Button GetButtonByType(UpgType type)
     {
