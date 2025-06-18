@@ -68,18 +68,20 @@ public class SpawnEnemy : MonoBehaviour
     // 일정 시간 후 적을 생성하고 기존 오브젝트 제거
     public IEnumerator SpawnAfterDelay(float delay, GameObject enemyToDestroy)
     {
+        // enemyToDestroy가 유효한지 확인 후 제거
+        if (enemyToDestroy != null)
+        {
+            Transform parent = enemyToDestroy.transform.parent;
+            if (parent != null)
+            {
+                Destroy(parent.gameObject);
+            }
+        }
         yield return new WaitForSeconds(delay);
 
         SpawnOneEnemyImmediately();
 
-        // enemyToDestroy가 유효한지 확인 후 제거
-        if (enemyToDestroy != null)
-        {
-            var root = enemyToDestroy.transform.parent;
-            if (root != null && root.gameObject != null)
-            {
-                Destroy(root.gameObject);
-            }
-        }
+       
+        
     }
 }
