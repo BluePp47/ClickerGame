@@ -21,7 +21,6 @@ public class CurrencyManager
 
     public void AddGold(int amount)
     {
-        Debug.Log("p");
         playerData.gold += amount;
         coroutineHost.StartCoroutine(GoldChange());
     }
@@ -47,7 +46,6 @@ public class CurrencyManager
 
         int endValue = playerData.gold; //끝났을때 실제 보유한 재화
 
-        Debug.Log($"{startValue} {endValue}");
         float waitTime = 0.02f; //숫자를 변경할 때 걸리는 시간
 
         //골드가 증가인지 감소인지 확인

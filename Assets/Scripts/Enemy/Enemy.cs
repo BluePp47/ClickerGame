@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour //IPointerClickHandler
 {
     public GameManager GameManager; // 게임 매니저 참조
     public EnemyData enemyData;     // 이 적이 어떤 종류인지에 대한 데이터
@@ -32,7 +33,6 @@ public class Enemy : MonoBehaviour
     // 데미지를 받을 때 호출
     public void TakeDamage(int amount)
     {
-        Debug.Log($"현재체력 {currentHealth}  {amount}");
         currentHealth -= amount;
 
         // currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
@@ -79,4 +79,10 @@ public class Enemy : MonoBehaviour
             spawner.StartCoroutine(spawner.SpawnAfterDelay(1f, gameObject));
         }
     }
+
+    //public void OnPointerClick(PointerEventData eventData)
+    //{
+    //    Debug.Log("mmmmmm");
+        
+    //}
 }
