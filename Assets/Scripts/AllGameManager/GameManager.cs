@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public AudioManager audioManager;//BGM 재생용
     [SerializeField] private CurrencyManager currencyManager; //골드획득이나 소비용
     public TextMeshProUGUI goldText;
+    public PlayerUpgradeHandler playerUpgradeHandler { get; private set; }
+    [SerializeField] private PlayerStatsSO statsSO;
     public event Action<List<TMP_Text>, UpgType> OnUpdateUI;
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
             currencyManager.goldText = goldText;
 
             audioManager = FindObjectOfType<AudioManager>();
+            playerUpgradeHandler = new PlayerUpgradeHandler(statsSO);
         }
         else Destroy(gameObject);
     }
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         OnUpdateUI?.Invoke(list, type);
     }
+
     public void GainGold(int amount)
     {
         currencyManager.AddGold(amount);

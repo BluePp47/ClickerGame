@@ -40,33 +40,41 @@ public class PlayerUpgradeUI : MonoBehaviour
     {
         GameManager.Instance.OnUpdateUI += UpdateUI;
         GameManager.Instance.OnUpdateUI += TryUpgrade;
-        currencyManager.OnGoldChanged += GoldChanged;
+        currencyManager.OnGoldChanged += UIGoldChanged;
     }
     private void Start()
     {
-        TryUpgrade(criticalLIst, UpgType.Critical);
-        TryUpgrade(autoAtkLIst, UpgType.AutoAttack);
-        TryUpgrade(goldBonusLIst, UpgType.GoldBonus);
-
-        criticalBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(criticalLIst, UpgType.Critical));
-        autoAtkBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(autoAtkLIst, UpgType.AutoAttack));
-        goldBonusBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(goldBonusLIst, UpgType.GoldBonus));
+        Init();
+        BtnAddListener();
     }
     private void OnDisable()
     {
         GameManager.Instance.OnUpdateUI -= UpdateUI;
         GameManager.Instance.OnUpdateUI -= TryUpgrade;
-        currencyManager.OnGoldChanged -= GoldChanged;
+        currencyManager.OnGoldChanged -= UIGoldChanged;
     }
     public void UpdateUI(List<TMP_Text> txt, UpgType type)
     {
         int currentGold = GameManager.Instance.playerData.gold;
+
         txt[(int)UpgText.Level].text = playerUpgHandler.GetLvlTitleText(txt[(int)UpgText.Level].text);                    // Lvl Txt
         txt[(int)UpgText.StatValue].text = playerUpgHandler.GetValueText(txt[(int)UpgText.Level].text, type);             // Value Txt
         txt[(int)UpgText.Cost].text = playerUpgHandler.GetCostText(txt[(int)UpgText.Level].text);                         // Cost Txt
         GameManager.Instance.playerData.gold = playerUpgHandler.GetCurrentGoldText(txt[(int)UpgText.Level].text, currentGold);                            // CurrentGold Txt
     }
-    void GoldChanged(int currentGold)
+    void Init()
+    {
+        TryUpgrade(criticalLIst, UpgType.Critical);
+        TryUpgrade(autoAtkLIst, UpgType.AutoAttack);
+        TryUpgrade(goldBonusLIst, UpgType.GoldBonus);
+    }
+    void BtnAddListener()
+    {
+        criticalBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(criticalLIst, UpgType.Critical));
+        autoAtkBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(autoAtkLIst, UpgType.AutoAttack));
+        goldBonusBtn.onClick.AddListener(() => GameManager.Instance.OnClickUpgrade(goldBonusLIst, UpgType.GoldBonus));
+    }
+    void UIGoldChanged(int currentGold)
     {
         TryUpgrade(criticalLIst, UpgType.Critical);
         TryUpgrade(autoAtkLIst, UpgType.AutoAttack);

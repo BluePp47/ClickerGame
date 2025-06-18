@@ -21,12 +21,16 @@ public class Attack : MonoBehaviour
     public float TouchAttackCoolDown = 0.2f;//터치 쿨다운
     public float LastAtkTouch;
     public bool IsAttackTouch = true;
+    private float criticalValue;
+    private float autoAtkValue;
 
     private Coroutine AutoAttackCoroutine;
 
     // Start is called before the first frame update
     void Start()
     {
+        criticalValue = GameManager.Instance.playerUpgradeHandler.GetCriticalValue();
+        autoAtkValue = GameManager.Instance.playerUpgradeHandler.GetAutoAtkValue();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         AutoAttack();
     }
@@ -95,7 +99,7 @@ public class Attack : MonoBehaviour
     }
     IEnumerator AutoAttackRoutine()
     {
-        while (true)
+        while (true)//pupghandler 정보 갖고와서 lvl 0보다 클때만 호출
         {
             // 공격시 데미지 계산 추가
             TotalAtk();
@@ -107,7 +111,14 @@ public class Attack : MonoBehaviour
     //자동공격 딜레이
     float GetAutoAttackDelay()
     {
-        return Mathf.Max(0.2f, 2.0f - 0.05f * AutoAttacklevel);
+        return Mathf.Max(0.2f, 2.0f - 0.05f * autoAtkValue);
     }
+    public void SetUpgradeValues(float critChance, float autoAtkSpeed)
+    {
+        criticalValue = critChance;
+        autoAtkValue = autoAtkSpeed;
+        Debug.Log($"criticalValue{criticalValue} / autoAtkValue{autoAtkValue}");
+    }
+
 }
 

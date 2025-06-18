@@ -4865,6 +4865,7 @@ MonoBehaviour:
   audioManager: {fileID: 462284311}
   currencyManager: {fileID: 1610683681}
   goldText: {fileID: 384773006}
+  statsSO: {fileID: 11400000, guid: 30bc442be1e312b40b058fa84d69cb39, type: 2}
 --- !u!4 &1062469084
 Transform:
   m_ObjectHideFlags: 0
@@ -6484,7 +6485,7 @@ MonoBehaviour:
     equippedWeapon: 
     autoAttackLevel: 0
     criticalLevel: 0
-  goldText: {fileID: 0}
+  goldText: {fileID: 384773006}
   waitTime: 0.02
 --- !u!4 &1610683682
 Transform:

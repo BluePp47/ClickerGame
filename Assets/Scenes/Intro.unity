@@ -471,6 +471,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689071913}
   m_CullTransparentMesh: 1
+--- !u!1 &1052729183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1052729185}
+  - component: {fileID: 1052729184}
+  m_Layer: 0
+  m_Name: CurrencyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1052729184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052729183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb389d2c09c90a64d9f418b1cca94998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData:
+    gold: 10000
+    stage: 1
+    attack: 10
+    criticalChance: 0
+    level: 1
+    ownedWeapons: []
+    equippedWeapon: 
+    autoAttackLevel: 0
+    criticalLevel: 0
+  goldText: {fileID: 0}
+  waitTime: 0.02
+--- !u!4 &1052729185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052729183}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 343.74078, y: 532.67395, z: -3.9722967}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1323038370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,12 +1686,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
-    gold: 10000
+    gold: 0
     stage: 1
     attack: 10
+    criticalChance: 0
     level: 1
-  audioManager: {fileID: 0}
+    ownedWeapons: []
+    equippedWeapon: 
+    autoAttackLevel: 0
+    criticalLevel: 0
+  audioManager: {fileID: 1454043574}
+  currencyManager: {fileID: 1052729184}
   goldText: {fileID: 0}
+  statsSO: {fileID: 11400000, guid: 30bc442be1e312b40b058fa84d69cb39, type: 2}
 --- !u!222 &1259583963879042517
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2791,3 +2854,4 @@ SceneRoots:
   - {fileID: 1853388893}
   - {fileID: 1454043572}
   - {fileID: 688316197698284186}
+  - {fileID: 1052729185}

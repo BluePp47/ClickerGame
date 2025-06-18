@@ -4,6 +4,8 @@ public class PlayerUpgradeHandler
 {
     private PlayerStatsSO data;
 
+    private int critLevel = 0;
+    private int autoAtkLevel = 0;
     public string GetLvlTitleText(string level)
     {
         int lvl = int.Parse(level);
@@ -18,9 +20,11 @@ public class PlayerUpgradeHandler
         {
             case UpgType.Critical:
                 value = data.GetCriticalValue(level);
+                critLevel = int.Parse(level); // refactor
                 return ($"{value}%");
             case UpgType.AutoAttack:
                 value = data.GetAutoAtkValue(level);
+                autoAtkLevel = int.Parse(level); // refactor
                 return ($"{value}회/초");
             case UpgType.GoldBonus:
                 value = data.GetGoldBonusValue(level);
@@ -45,6 +49,14 @@ public class PlayerUpgradeHandler
         }
         int value = gold - cost;
         return value;
+    }
+    public float GetCriticalValue()
+    {
+        return data.GetCriticalValue(critLevel.ToString());
+    }
+    public float GetAutoAtkValue()
+    {//0이면 동작안하게 
+        return data.GetAutoAtkValue(autoAtkLevel.ToString());
     }
     public PlayerUpgradeHandler(PlayerStatsSO statsdata)
     {
