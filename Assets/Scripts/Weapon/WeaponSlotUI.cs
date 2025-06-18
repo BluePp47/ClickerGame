@@ -9,6 +9,7 @@ public class WeaponSlotUI : MonoBehaviour
 {
     public Image iconImage;
     public TextMeshProUGUI nameText;
+    public TextMeshProUGUI levelText;
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI upgradeCostText;
     public Button buyButton;
@@ -28,11 +29,11 @@ public class WeaponSlotUI : MonoBehaviour
         if (isOwned)
         {
             iconImage.sprite = data.icon;
-            iconImage.color = Color.white;
             nameText.text = data.weaponName;
 
             int damage = data.GetDamageAtLevel(currentLevel);
-            damageText.text = $"+{damage} Damage (Lv.{currentLevel})";
+            levelText.text = $"Lv.{currentLevel}";
+            damageText.text = $"공격력 +{damage}";
 
             buyButton.gameObject.SetActive(false);
 
@@ -50,6 +51,7 @@ public class WeaponSlotUI : MonoBehaviour
             iconImage.color = new Color(0, 0, 0, 0.3f);
             nameText.text = "???";
             damageText.text = "???";
+            levelText.text = "Lv.0";
             upgradeCostText.text = "";
             buyButton.gameObject.SetActive(true);
             buyButton.onClick.RemoveAllListeners();

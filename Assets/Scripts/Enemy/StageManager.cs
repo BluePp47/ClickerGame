@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 // 게임의 전체 스테이지를 관리하는 매니저
 public class StageManager : MonoBehaviour
 {
     [Header("StageData (ScriptableObject)")]
     public List<StageData> stages; // 전체 스테이지 목록
+
+    public TextMeshProUGUI stageText; // 현재 스테이지 표시용 텍스트
+    public TextMeshProUGUI timerText; // 남은 시간 표시용 텍스트
 
     private int currentStageIndex = 0; // 현재 스테이지 인덱스
     public StageData currentStage;     // 현재 진행 중인 스테이지 정보
@@ -39,6 +43,16 @@ public class StageManager : MonoBehaviour
                 RetryStage(); // 실패 시 스테이지 다시 시작
             }
         }
+        UpdateUI();
+    }
+    void UpdateUI()
+    {
+        if (stageText != null)
+            stageText.text = $"스테이지: {currentStageIndex + 1}";
+
+        if (timerText != null)
+            timerText.text = $" {Mathf.CeilToInt(timeRemaining)}";
+       
     }
 
     // 적 처치 시 호출됨

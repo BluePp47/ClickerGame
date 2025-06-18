@@ -43,9 +43,12 @@ public class SpawnEnemy : MonoBehaviour
         {
             return; //방코
         }
-        Debug.Log("n");
+
         // 선택한 프리팹을 해당 위치에 생성
-        GameObject enemyGO = Instantiate(selectedEnemyData.prefab, spawnPoint.position, Quaternion.identity);
+        GameObject enemyGO = Instantiate(selectedEnemyData.prefab, transform);
+        enemyGO.transform.position = spawnPoint.position;
+        enemyGO.transform.rotation = Quaternion.identity;
+        // spawnPoint.position, Quaternion.identity);
 
         // Enemy 스크립트에 데이터 전달 및 초기화
         Enemy enemyScript = enemyGO.GetComponentInChildren<Enemy>();
@@ -54,7 +57,7 @@ public class SpawnEnemy : MonoBehaviour
             int stageNumber = stageManager.currentStage.stageNumber;
             enemyScript.Init(selectedEnemyData, stageNumber);
             attack.SetEnemy(enemyScript);
-            Debug.Log("s");
+            
         }
         else
         {
@@ -69,6 +72,14 @@ public class SpawnEnemy : MonoBehaviour
 
         SpawnOneEnemyImmediately();
 
-        Destroy(enemyToDestroy.transform.root.gameObject); // 기존 적 오브젝트 제거
+        // enemyToDestroy가 유효한지 확인 후 제거
+        if (enemyToDestroy != null)
+        {
+            var root = enemyToDestroy.transform.parent;
+            if (root != null && root.gameObject != null)
+            {
+                Destroy(root.gameObject);
+            }
+        }
     }
 }

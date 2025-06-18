@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Attack : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Attack : MonoBehaviour
     public WeaponData weaponData;
     public Enemy enemy;
     public StatCalculator statCalculator;
+
+    Camera cam;
 
     public int AutoAttacklevel = 1;// 자동공격
     public int CriticalLevel = 1;
@@ -24,27 +27,48 @@ public class Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         AutoAttack();
     }
 
     // Update is called once per frame
+    Vector3 mousePositionWorld;
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+        
+            Debug.Log("sss");
+            Vector3 mousePositionScreen = Input.mousePosition;
+            mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionScreen);
+            Touch();
+        }
         LastAtkTouch += Time.deltaTime;
-        Touch();
     }
-   
+
+    //public static bool RectangleContainsScreenPoint(RectTransform rect, Vector2 screenPoint, Camera cam)
+    //{
+    //    Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,
+    //            Input.mousePosition.y, -Camera.main.transform.position.z)); 
+    //}
 
     public void Touch()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        Debug.Log("do");
+        //input.getmousebuttondown(0)가 안에 있으면 의미가 없다.
+        if (IsAttackTouch && (LastAtkTouch > TouchAttackCoolDown))
         {
-            return; // UI 클릭이면 무시
-        }
-        //Input.GetMouseButtonDown(0)가 안에 있으면 의미가 없다.
-        if (IsAttackTouch && Input.GetMouseButtonDown(0) && (LastAtkTouch > TouchAttackCoolDown))
-        {
-            TotalAtk();
+            float MinY = -0.2f;
+            float MaxY = 2.6f;
+
+            Vector3 mousePos = mousePositionWorld;
+            Debug.Log($"{MinY}  {MaxY}  {mousePos}");
+            if (mousePos.y >= MinY && mousePos.y <= MaxY)
+            {
+                Debug.Log("ooo");
+                TotalAtk();
+                LastAtkTouch = Time.time;
+            }
         }
     }
 

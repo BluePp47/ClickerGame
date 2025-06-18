@@ -15,4 +15,9 @@ MonoBehaviour:
   stageNumber: 5
   stageDuration: 90
   killsToNext: 5
-  spawnableEnemies: []
+  spawnableEnemies:
+  - {fileID: 11400000, guid: d450ffeb0b1964a4a9720babf2b4a1b5, type: 2}
+  - {fileID: 11400000, guid: d450ffeb0b1964a4a9720babf2b4a1b5, type: 2}
+  - {fileID: 11400000, guid: d450ffeb0b1964a4a9720babf2b4a1b5, type: 2}
+  - {fileID: 11400000, guid: d450ffeb0b1964a4a9720babf2b4a1b5, type: 2}
+  - {fileID: 11400000, guid: d450ffeb0b1964a4a9720babf2b4a1b5, type: 2}

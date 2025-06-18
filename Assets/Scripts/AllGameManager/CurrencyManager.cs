@@ -1,15 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CurrencyManager 
 {
     private PlayerData playerData;
-    private Text goldText; //UGUI ÅØ½ºÆ®·Î °ñµåÇ¥½Ã
+    private TextMeshProUGUI goldText; //UGUI í…ìŠ¤íŠ¸ë¡œ ê³¨ë“œí‘œì‹œ
     private MonoBehaviour coroutineHost;
 
-    public CurrencyManager(PlayerData data, Text goldText, MonoBehaviour host)
+    public CurrencyManager(PlayerData data, TextMeshProUGUI goldText, MonoBehaviour host)
     {
         this.playerData = data;
         this.goldText = goldText;
@@ -36,33 +37,33 @@ public class CurrencyManager
     }
     private void UpdateGoldUI()
     {
-        goldText.text = $"Gold: {playerData.gold}";
+        goldText.text = $"{playerData.gold}";
     }
 
     private IEnumerator GoldChange()
     {
-        int startValue = int.Parse(goldText.text); //½ÃÀÛ ½Ã ÇöÀç ÅØ½ºÆ®¿¡ Ç¥½ÃµÈ °ñµå °ªÀ» ¹İ¿µ
+        int startValue = int.Parse(goldText.text); //ì‹œì‘ ì‹œ í˜„ì¬ í…ìŠ¤íŠ¸ì— í‘œì‹œëœ ê³¨ë“œ ê°’ì„ ë°˜ì˜
 
-        int endValue = playerData.gold; //³¡³µÀ»¶§ ½ÇÁ¦ º¸À¯ÇÑ ÀçÈ­
+        int endValue = playerData.gold; //ëë‚¬ì„ë•Œ ì‹¤ì œ ë³´ìœ í•œ ì¬í™”
 
-        float waitTime = 0.02f; //¼ıÀÚ¸¦ º¯°æÇÒ ¶§ °É¸®´Â ½Ã°£
+        float waitTime = 0.02f; //ìˆ«ìë¥¼ ë³€ê²½í•  ë•Œ ê±¸ë¦¬ëŠ” ì‹œê°„
 
-        //°ñµå°¡ Áõ°¡ÀÎÁö °¨¼ÒÀÎÁö È®ÀÎ
-        if (startValue < endValue) //°ñµåÁõ°¡
+        //ê³¨ë“œê°€ ì¦ê°€ì¸ì§€ ê°ì†Œì¸ì§€ í™•ì¸
+        if (startValue < endValue) //ê³¨ë“œì¦ê°€
         {
             
-            for (int i = startValue; i <= endValue; i++)//for¹®À¸·Î ¼ıÀÚ¸¦ 1 ¾¿ º¯È­, ´«¿¡ º¸ÀÌ´Â È¿°ú
+            for (int i = startValue; i <= endValue; i++)//forë¬¸ìœ¼ë¡œ ìˆ«ìë¥¼ 1 ì”© ë³€í™”, ëˆˆì— ë³´ì´ëŠ” íš¨ê³¼
             {
-                goldText.text = i.ToString(); // ÅØ½ºÆ® UI ¾÷µ¥ÀÌÆ®
-                yield return new WaitForSeconds(waitTime); // ´ë±â
+                goldText.text = i.ToString(); // í…ìŠ¤íŠ¸ UI ì—…ë°ì´íŠ¸
+                yield return new WaitForSeconds(waitTime); // ëŒ€ê¸°
             }
         }
         else
         {
-            for (int i = startValue; i >= endValue; i--)// °ñµå°¡ °¨¼ÒÇÒ ¶§ 
+            for (int i = startValue; i >= endValue; i--)// ê³¨ë“œê°€ ê°ì†Œí•  ë•Œ 
             {
-                goldText.text = i.ToString(); // ÅØ½ºÆ® UI ¾÷µ¥ÀÌÆ®
-                yield return new WaitForSeconds(waitTime); // ´ë±â
+                goldText.text = i.ToString(); // í…ìŠ¤íŠ¸ UI ì—…ë°ì´íŠ¸
+                yield return new WaitForSeconds(waitTime); // ëŒ€ê¸°
             }
         }
     }
