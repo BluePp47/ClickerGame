@@ -8717,6 +8717,7 @@ MonoBehaviour:
   goldBonusBtn: {fileID: 155239914}
   statsSO: {fileID: 11400000, guid: 30bc442be1e312b40b058fa84d69cb39, type: 2}
   currencyManager: {fileID: 1610683681}
+  atk: {fileID: 1588651144}
 --- !u!4 &2046663001
 Transform:
   m_ObjectHideFlags: 0

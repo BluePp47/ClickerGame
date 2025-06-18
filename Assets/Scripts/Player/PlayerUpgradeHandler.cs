@@ -21,14 +21,14 @@ public class PlayerUpgradeHandler
             case UpgType.Critical:
                 value = data.GetCriticalValue(level);
                 critLevel = int.Parse(level); // refactor
-                return ($"{value}%");
+                return value.ToString("N0");
             case UpgType.AutoAttack:
                 value = data.GetAutoAtkValue(level);
                 autoAtkLevel = int.Parse(level); // refactor
-                return ($"{value}»∏/√ ");
+                return value.ToString("N1");
             case UpgType.GoldBonus:
                 value = data.GetGoldBonusValue(level);
-                return ($"{value}%");
+                return value.ToString("N0");
         }
         return value.ToString("N1");
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     public PlayerUpgradeHandler playerUpgradeHandler { get; private set; }
     [SerializeField] private PlayerStatsSO statsSO;
     public event Action<List<TMP_Text>, UpgType> OnUpdateUI;
+
+    private float addGold;
     private void Awake()
     {
         if (Instance == null)
@@ -52,9 +55,23 @@ public class GameManager : MonoBehaviour
 
     public void GainGold(int amount)
     {
-        currencyManager.AddGold(amount);
-    }
+        if (addGold > 0)
+        {
+            int addGoldBonus = (int)((addGold / 100) * amount);
+            currencyManager.AddGold(amount + addGoldBonus);
+            Debug.Log($"addGoldBonus {amount + addGoldBonus}");
 
+        }
+        else
+        {
+            Debug.Log($"amount {amount}");
+            currencyManager.AddGold(amount);
+        }
+    }
+    public void SetAddGold(float value)
+    {
+        addGold = value;
+    }
     public void ConsumeGold(int amount)
     {
         currencyManager.SubtractGold(amount);

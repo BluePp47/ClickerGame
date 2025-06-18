@@ -31,6 +31,7 @@ public class PlayerUpgradeUI : MonoBehaviour
     [SerializeField] private PlayerUpgradeHandler playerUpgHandler;
     [SerializeField] private PlayerStatsSO statsSO;
     [SerializeField] private CurrencyManager currencyManager;
+    [SerializeField] private Attack atk;    
     
     private void Awake()
     {
@@ -61,6 +62,18 @@ public class PlayerUpgradeUI : MonoBehaviour
         txt[(int)UpgText.StatValue].text = playerUpgHandler.GetValueText(txt[(int)UpgText.Level].text, type);             // Value Txt
         txt[(int)UpgText.Cost].text = playerUpgHandler.GetCostText(txt[(int)UpgText.Level].text);                         // Cost Txt
         GameManager.Instance.playerData.gold = playerUpgHandler.GetCurrentGoldText(txt[(int)UpgText.Level].text, currentGold);                            // CurrentGold Txt
+        if(type == UpgType.AutoAttack)
+        {
+            atk.SetAutoAtkStat(float.Parse(txt[(int)UpgText.StatValue].text));
+        }
+        else if(type == UpgType.Critical)
+        {
+            atk.SetCriticalStat(float.Parse(txt[(int)UpgText.StatValue].text));
+        }
+        else if(type == UpgType.GoldBonus)
+        {
+            GameManager.Instance.SetAddGold(float.Parse(txt[(int)UpgText.StatValue].text));
+        }
     }
     void Init()
     {
