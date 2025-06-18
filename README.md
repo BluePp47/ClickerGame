@@ -8,3 +8,9 @@
 
 
 - <span style="color: skyblue">MainScene  </span>
+
+
+
+
+![image](https://github.com/user-attachments/assets/34b783bf-9f06-4832-b13a-72d903c8a230)
+- <span style="color: skyblue">Setting  </span>
