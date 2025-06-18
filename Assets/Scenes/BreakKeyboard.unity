@@ -6234,7 +6234,6 @@ MonoBehaviour:
   TouchAttackCoolDown: 0.2
   LastAtkTouch: 0
   IsAttackTouch: 1
-  rt: {fileID: 0}
 --- !u!1 &1650028547
 GameObject:
   m_ObjectHideFlags: 0
