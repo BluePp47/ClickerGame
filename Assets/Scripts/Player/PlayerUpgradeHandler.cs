@@ -4,6 +4,8 @@ public class PlayerUpgradeHandler
 {
     private PlayerStatsSO data;
 
+    private int critLevel = 0;
+    private int autoAtkLevel = 0;
     public string GetLvlTitleText(string level)
     {
         int lvl = int.Parse(level);
@@ -18,13 +20,15 @@ public class PlayerUpgradeHandler
         {
             case UpgType.Critical:
                 value = data.GetCriticalValue(level);
-                return ($"{value}%");
+                critLevel = int.Parse(level); // refactor
+                return value.ToString("N0");
             case UpgType.AutoAttack:
                 value = data.GetAutoAtkValue(level);
-                return ($"{value}회/초");
+                autoAtkLevel = int.Parse(level); // refactor
+                return value.ToString("N1");
             case UpgType.GoldBonus:
                 value = data.GetGoldBonusValue(level);
-                return ($"{value}%");
+                return value.ToString("N0");
         }
         return value.ToString("N1");
     }
@@ -33,15 +37,27 @@ public class PlayerUpgradeHandler
         int cost = data.GetCostValue(level);
         return cost.ToString();
     }
-    public string GetCurrentGoldText(string level, int Gold)
+    public int GetCurrentGoldText(string level, int gold)
     {
         int costGrowthPerLvl = 10;
 
         int lvl = int.Parse(level);
         int cost = lvl * costGrowthPerLvl;
-        int value = Gold - cost;
-        return value.ToString();
-    } 
+        if (gold <= cost)
+        {
+            return gold;
+        }
+        int value = gold - cost;
+        return value;
+    }
+    public float GetCriticalValue()
+    {
+        return data.GetCriticalValue(critLevel.ToString());
+    }
+    public float GetAutoAtkValue()
+    {//0이면 동작안하게 
+        return data.GetAutoAtkValue(autoAtkLevel.ToString());
+    }
     public PlayerUpgradeHandler(PlayerStatsSO statsdata)
     {
         data = statsdata;

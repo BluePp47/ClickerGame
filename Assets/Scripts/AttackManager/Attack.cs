@@ -21,12 +21,16 @@ public class Attack : MonoBehaviour
     public float TouchAttackCoolDown = 0.2f;//터치 쿨다운
     public float LastAtkTouch;
     public bool IsAttackTouch = true;
+    private float criticalValue;
+    private float autoAtkValue;
 
     private Coroutine AutoAttackCoroutine;
 
     // Start is called before the first frame update
     void Start()
     {
+        criticalValue = GameManager.Instance.playerUpgradeHandler.GetCriticalValue();
+        autoAtkValue = GameManager.Instance.playerUpgradeHandler.GetAutoAtkValue();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         AutoAttack();
     }
@@ -37,7 +41,7 @@ public class Attack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-        
+
             Debug.Log("sss");
             Vector3 mousePositionScreen = Input.mousePosition;
             mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionScreen);
@@ -81,7 +85,21 @@ public class Attack : MonoBehaviour
     public void TotalAtk()
     {
         if (enemy != null)
-            enemy.TakeDamage(statCalculator.GetTotalDamage());
+        {
+            if (criticalValue > 0)
+            {
+                int addDmg = (int)((criticalValue / 100) * statCalculator.GetTotalDamage());
+                enemy.TakeDamage(statCalculator.GetTotalDamage() + addDmg);
+                Debug.Log($"addDmg = {addDmg}");
+
+            }
+            else
+            {
+                enemy.TakeDamage(statCalculator.GetTotalDamage());
+            }
+
+        }
+
     }
     //null 예외처리
     public void AutoAttack()
@@ -95,10 +113,14 @@ public class Attack : MonoBehaviour
     }
     IEnumerator AutoAttackRoutine()
     {
-        while (true)
+        while (true)//pupghandler 정보 갖고와서 lvl 0보다 클때만 호출
         {
+            if (autoAtkValue > 0)
+            {
+                TotalAtk();
+
+            }
             // 공격시 데미지 계산 추가
-            TotalAtk();
             float delay = GetAutoAttackDelay();
             yield return new WaitForSeconds(delay);
         }
@@ -107,7 +129,24 @@ public class Attack : MonoBehaviour
     //자동공격 딜레이
     float GetAutoAttackDelay()
     {
-        return Mathf.Max(0.2f, 2.0f - 0.05f * AutoAttacklevel);
+        if (autoAtkValue > 0)
+        {
+            return 1 / autoAtkValue;
+        }
+        else
+        {
+            return 0.1f;
+        }
+        //return Mathf.Max(0.2f, 2.0f - 0.05f * autoAtkValue);
+    }
+
+    public void SetCriticalStat(float value)
+    {
+        criticalValue = value;
+    }
+    public void SetAutoAtkStat(float value)
+    {
+        autoAtkValue = value;
     }
 }
 
