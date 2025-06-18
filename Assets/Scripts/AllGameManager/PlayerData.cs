@@ -47,7 +47,7 @@ public class PlayerData
     }
     public PlayerData()
     {
-        gold = 1000000;
+        gold = 0;
         stage = 1;
         attack = 10;
         level = 1;
