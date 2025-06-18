@@ -1,35 +1,23 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StatCalculator : MonoBehaviour
 {
     public PlayerData playerData;
-    public WeaponManager weaponManager;
+    public WeaponData weaponData;
 
     public float criticalChance = 0.5f;
     public int criticalMultiplier = 2;
 
     public int GetTotalDamage()
     {
-        int playerBase = playerData.attack;
-
-        WeaponData bestWeapon = weaponManager.GetBestWeapon();
-
-        int weaponDamage = 0;
-        if (bestWeapon != null)
-        {
-            weaponDamage = weaponManager.GetWeaponDamage(bestWeapon);
-        }
-
-        int totalDamage = playerBase + weaponDamage;
-
+        int baseDamage = playerData.attack + weaponData.baseDamage;
         if (IsCriticalAtk(criticalChance))
         {
-            return totalDamage * criticalMultiplier;
+            return baseDamage * criticalMultiplier;
         }
-
-        return totalDamage;
+        return baseDamage;
     }
 
     public bool IsCriticalAtk(float criticPer)
