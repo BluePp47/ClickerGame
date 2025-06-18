@@ -73,4 +73,12 @@ public class WeaponManager : MonoBehaviour
 
         return best;
     }
+
+    public int GetWeaponDamage(WeaponData weapon)
+    {
+        if (!ownedWeapons.Contains(weapon)) return 0;
+        int level = GetWeaponLevel(weapon);
+        return weapon.GetDamageAtLevel(level);
+    }
+
 }
