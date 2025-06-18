@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour, IPointerClickHandler
+public class Enemy : MonoBehaviour //IPointerClickHandler
 {
     public GameManager GameManager; // 게임 매니저 참조
     public EnemyData enemyData;     // 이 적이 어떤 종류인지에 대한 데이터
@@ -80,9 +80,9 @@ public class Enemy : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("mmmmmm");
+    //public void OnPointerClick(PointerEventData eventData)
+    //{
+    //    Debug.Log("mmmmmm");
         
-    }
+    //}
 }
