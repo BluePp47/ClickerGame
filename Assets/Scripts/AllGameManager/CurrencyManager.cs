@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class CurrencyManager : MonoBehaviour
     public PlayerData playerData;
     public TextMeshProUGUI goldText; //UGUI 텍스트로 골드표시
     public float waitTime = 0.02f; // 텍스트가 변경되는 속도<= float waitTime = 0.02f; //숫자를 변경할 때 걸리는 시간
+    public event Action<int> OnGoldChanged;
     void Start()
     {
         UpdateGoldUI();
@@ -18,6 +20,7 @@ public class CurrencyManager : MonoBehaviour
     {
         playerData.gold += amount;
         StartCoroutine(GoldChange());
+        OnGoldChanged?.Invoke(playerData.gold);
     }
 
     public bool SubtractGold(int amount)
