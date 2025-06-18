@@ -21,6 +21,9 @@ public class Attack : MonoBehaviour
 
     private Coroutine AutoAttackCoroutine;
 
+
+    public RectTransform rt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,21 +34,26 @@ public class Attack : MonoBehaviour
     void Update()
     {
         LastAtkTouch += Time.deltaTime;
-        Touch();
+        
     }
-   
 
+    //public static bool RectangleContainsScreenPoint(RectTransform rect, Vector2 screenPoint, Camera cam)
+    //{
+
+    //}
     public void Touch()
     {
         //if (EventSystem.current.IsPointerOverGameObject())
         //{
         //    return; // UI 클릭이면 무시
         //}
-        //Input.GetMouseButtonDown(0)가 안에 있으면 의미가 없다.
+
+        //input.getmousebuttondown(0)가 안에 있으면 의미가 없다.
         if (IsAttackTouch && Input.GetMouseButtonDown(0) && (LastAtkTouch > TouchAttackCoolDown))
         {
             TotalAtk();
         }
+
     }
 
     public void SetEnemy(Enemy enemy)
